@@ -6,8 +6,78 @@
     left: 0;
     z-index: -1; 
   }
-  
 
+  #banana{
+    height: 100vh;
+  }
+
+  /* about section starts */
+.about {
+    background: rgb(255, 255, 255);
+  }
+  .about .row{
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    flex-wrap: wrap;
+    padding: 4rem;
+  }
+  .about .row .image {
+    text-align: center;
+    flex: 1 1 35rem;
+  }
+  .about .row .image img{
+    margin: 4rem;
+    width: 30rem;
+    border-radius: 5%;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.6);
+    mix-blend-mode:luminosity;
+    transition: .3s;
+    cursor: pointer;
+  }
+  .about .row .image img:hover{
+    mix-blend-mode: normal;
+  }
+  .about .row .content {
+    flex: 1 1 45rem;
+    padding: 3rem;
+  }
+  .about .row .content h3{
+    color: rgb(27, 27, 27);
+    font-size: 2.5rem;
+  }
+  .about .row .content .tag{
+    font-size: 1.4rem;
+    color: #020133;
+    font-weight: 600;
+    margin-top: 1rem;
+  }
+  .about .row .content p{
+    font-size: 1.5rem;
+    margin-top: 1.5rem;
+    font-family: 'Nunito';
+    font-weight: 600;
+  }
+  .about .row .content .box-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    font-family: 'Nunito';
+    font-weight: 600;
+  }
+  .about .row .content .box-container .box p{
+    text-transform: none;
+  }
+  .about .row .content .box-container .box p span{
+    color:#424fc9;
+  }
+  
+  .home #particles-js{
+    position: absolute;
+    top: 0;left: 0;
+    height: 100%;
+    width: 100%;
+  }
 
 
 
