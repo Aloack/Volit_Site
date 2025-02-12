@@ -19,14 +19,6 @@
   width: 100%; /* Adicionando isso para garantir que a largura seja total */
 }
 
-.home #particles-js {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-}
-
 .home::before {
   content: '';
   position: absolute;
@@ -41,18 +33,6 @@
   padding-top: 10rem;
   z-index: 1; /* Garante que o conteúdo esteja acima dos outros elementos */
   text-align: center; /* Centraliza o texto dentro da .content */
-}
-
-.home .content h3 {
-  font-size: 5rem;
-  font-weight: 800;
-  color: #002057;
-}
-
-.home .content h3 span {
-  font-size: 5rem;
-  font-weight: 800;
-  color: #0984ad;
 }
 
 .home .content p {
