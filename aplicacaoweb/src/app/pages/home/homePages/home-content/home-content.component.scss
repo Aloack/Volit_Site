@@ -6,10 +6,95 @@
     left: 0;
     z-index: -1; 
   }
- 
-  #banana{
-    height: 80vh;
+
+ /* hero section starts */
+.home {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  min-height: 5dvh;
+  width: 100%; /* Adicionando isso para garantir que a largura seja total */
+}
+
+.home #particles-js {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.home::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.home .content {
+  flex: 1 1 40rem;
+  padding-top: 1rem;
+  z-index: 1; /* Garante que o conteúdo esteja acima dos outros elementos */
+  text-align: center; /* Centraliza o texto dentro da .content */
+}
+
+.home .content h3 {
+  font-size: 5rem;
+  font-weight: 800;
+  color: #002057;
+}
+
+.home .content h3 span {
+  font-size: 5rem;
+  font-weight: 800;
+  color: #0984ad;
+}
+
+.home .content p {
+  font-size: 2.5rem;
+  color: #000;
+  font-weight: 600;
+  padding: 1rem 0;
+}
+
+.home .content p span {
+  font-size: 2.5rem;
+  color: #0984ad;
+  font-weight: 600;
+  padding: 1rem 0;
+}
+
+/* hero media queries */
+@media (max-width: 450px) {
+  .home .btn {
+    margin: 4rem 0;
   }
+
+  .socials {
+    margin-top: 12rem;
+  }
+
+  .home .image img {
+    margin-top: -12rem;
+  }
+
+  .home .content p {
+    font-size: 2.2rem;
+  }
+
+  .home .content p span {
+    font-size: 2.2rem;
+  }
+}
+
+/* hero section end */
+
+
 /* about section starts */
 .about {
   background: rgb(255, 255, 255);
@@ -215,8 +300,14 @@ section{
 }
 
 .work h2 {
+  display: block;
+  text-align: center;
+  margin: 0 auto;
   color: #fff;
-  padding: 1rem;
+  padding: 0rem;
+  font-size: 2.5rem;
+  max-width: 90%;
+  margin-bottom: 2rem;
 }
 
 .work .heading span {
@@ -498,6 +589,7 @@ section{
   box-shadow: 0px 5px 10px rgba(48, 68, 247, .6);
   text-align: center;
 }
+
 .morebtn .btn span {
   font-weight: 600;
   font-size: 1.7rem;
@@ -551,6 +643,7 @@ section{
   }
   .morebtn {
     margin-top: 3rem;
+    margin-bottom: 2rem; /* Adiciona espaço abaixo do botão */
   }
 }
 /* experience media queries ends */
