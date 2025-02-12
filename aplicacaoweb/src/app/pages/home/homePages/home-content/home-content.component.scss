@@ -85,13 +85,177 @@
 
 
 
+/* work section starts */
+.work {
+  background: linear-gradient(to bottom, #2121e2, #00002c);
+  padding: 4rem 0; /* Espaçamento extra nas laterais */
+}
 
+.work h2 {
+  color: #fff;
+  padding: 1rem;
+}
 
+.work .heading span {
+  color: rgb(255, 230, 0);
+}
 
+.work .box-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin: 0 auto; /* Centraliza o container */
+  width: 90%; /* Deixa as caixas mais afastadas das laterais */
+  justify-content: center; /* Centraliza as caixas dentro do container */
+}
 
+.work .box-container .box {
+  position: relative;
+  border-radius: .5rem;
+  box-shadow: 0 .5rem 1rem rgba(225, 219, 219, 0.895);
+  overflow: hidden;
+  transition: transform 0.3s ease; /* Adicionando transição ao hover */
+}
 
+.work .box-container .box img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
 
+.work .box-container .box .content {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 85%;
+  left: 0;
+  background: rgba(255, 255, 255, 0.9);
+  display: flex;
+  flex-direction: column;
+}
 
+.work .box-container .box .content .tag {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 4.5rem;
+  width: 100%;
+  padding-left: 1rem;
+  background: #0f46a2;
+}
+
+.work .box-container .box .content .tag h3 {
+  font-size: 2rem;
+  color: white;
+}
+
+.work .box-container .box:hover .content {
+  top: 25%;
+  transform: scale(1.05); /* Adicionando leve zoom no hover */
+}
+
+.work .desc {
+  margin: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.work .desc p {
+  font-size: 1.5rem;
+}
+
+.work .desc .btns {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.work .desc .btns .btn {
+  line-height: 0;
+  display: inline;
+  padding: 1.5rem 2.5rem;
+  border-radius: .5rem;
+  font-size: 1.5rem;
+  color: #fff;
+  background: rgb(12, 12, 12);
+  margin-right: 2rem;
+}
+
+.work .desc .btns .btn:hover {
+  background: #310ae0f5;
+}
+
+.work .viewall {
+  display: flex;
+  justify-content: center;
+}
+
+.work .viewall .btn {
+  position: relative;
+  line-height: 0;
+  padding: 1.6rem 3rem;
+  border-radius: .5em;
+  transition: 0.5s;
+  color: rgb(255, 255, 255);
+  font-weight: 700;
+  border: 2px solid #fff;
+  box-shadow: 0px 5px 10px rgba(65, 84, 241, 0.4);
+  text-align: center;
+}
+
+.work .viewall .btn span {
+  font-weight: 600;
+  font-size: 1.7rem;
+  font-family: 'Nunito', sans-serif;
+}
+
+.work .viewall .btn i {
+  margin-left: 0.3rem;
+  font-size: 1.5rem;
+  transition: 0.3s;
+}
+
+.work .viewall .btn:hover {
+  background: #fff;
+  color: #000;
+}
+
+.work .viewall .btn:hover i {
+  transform: translateX(5px);
+}
+
+/* Responsive layout for 2 large boxes on top and 3 smaller boxes below */
+.work .box-container .box:nth-child(1),
+.work .box-container .box:nth-child(2) {
+  flex: 1 1 48%; /* Large boxes take 48% width */
+  height: 35rem; /* Aumenta a altura das caixas grandes */
+}
+
+.work .box-container .box:nth-child(3),
+.work .box-container .box:nth-child(4),
+.work .box-container .box:nth-child(5) {
+  flex: 1 1 32%; /* Smaller boxes take 32% width */
+  height: 25rem; /* Aumenta a altura das caixas pequenas */
+}
+
+@media (max-width: 768px) {
+  .work .box-container .box:nth-child(1),
+  .work .box-container .box:nth-child(2) {
+    flex: 1 1 100%; /* Full width for large boxes on smaller screens */
+    height: 25rem; /* Ajusta altura das caixas grandes */
+  }
+
+  .work .box-container .box:nth-child(3),
+  .work .box-container .box:nth-child(4),
+  .work .box-container .box:nth-child(5) {
+    flex: 1 1 100%; /* Full width for smaller boxes on smaller screens */
+    height: 25rem; /* Mantém a altura das caixas pequenas */
+  }
+}
+/* work section ends */
 
 
 /* experience section starts */
