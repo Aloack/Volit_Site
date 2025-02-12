@@ -4,6 +4,7 @@ import { HomeContentComponent } from "../homePages/home-content/home-content.com
 
 @Component({
   selector: 'app-home',
+  standalone:true,
   imports: [HeaderComponent, HomeContentComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
