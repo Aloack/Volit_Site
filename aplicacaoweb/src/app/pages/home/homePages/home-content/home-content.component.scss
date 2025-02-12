@@ -6,11 +6,10 @@
     left: 0;
     z-index: -1; 
   }
-
+ 
   #banana{
-    height: 100vh;
+    height: 80vh;
   }
-
 /* about section starts */
 .about {
   background: rgb(255, 255, 255);
@@ -209,19 +208,10 @@ section{
   }
 
 
-
-
-
-
-
-
-
-
-
 /* work section starts */
 .work {
   background: linear-gradient(to bottom, #2121e2, #00002c);
-  padding: 4rem 0; /* Espaçamento extra nas laterais */
+  padding: 6rem 8rem;
 }
 
 .work h2 {
@@ -236,18 +226,18 @@ section{
 .work .box-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.5rem;
-  margin: 0 auto; /* Centraliza o container */
-  width: 90%; /* Deixa as caixas mais afastadas das laterais */
-  justify-content: center; /* Centraliza as caixas dentro do container */
+  gap: 2rem;
+  margin: 0 auto;
+  width: 90%;
+  justify-content: center;
 }
 
 .work .box-container .box {
   position: relative;
-  border-radius: .5rem;
-  box-shadow: 0 .5rem 1rem rgba(225, 219, 219, 0.895);
+  border-radius: 0.5rem;
+  box-shadow: 0 0.5rem 1rem rgba(225, 219, 219, 0.895);
   overflow: hidden;
-  transition: transform 0.3s ease; /* Adicionando transição ao hover */
+  transition: transform 0.8s ease-in-out;
 }
 
 .work .box-container .box img {
@@ -256,74 +246,84 @@ section{
   object-fit: cover;
 }
 
+/* Área da tag e descrição - Ajustado */
 .work .box-container .box .content {
-  height: 100%;
-  width: 100%;
   position: absolute;
-  top: 85%;
+  bottom: 0;
   left: 0;
+  width: 100%;
   background: rgba(255, 255, 255, 0.9);
   display: flex;
   flex-direction: column;
-}
-
-.work .box-container .box .content .tag {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
   align-items: center;
-  height: 4.5rem;
+  transform: translateY(100%);
+  transition: transform 0.8s ease-in-out;
+}
+
+/* Tag sempre visível - Ajustado */
+.work .box-container .box .content .tag {
+  position: absolute;
+  bottom: 100%;
   width: 100%;
-  padding-left: 1rem;
   background: #0f46a2;
+  padding: 1rem 0;
+  transition: transform 0.8s ease-in-out;
 }
 
+/* Texto da tag */
 .work .box-container .box .content .tag h3 {
-  font-size: 2rem;
+  font-size: 1.8rem;
   color: white;
+  margin: 0;
+  text-align: center;
 }
 
-.work .box-container .box:hover .content {
-  top: 25%;
-  transform: scale(1.05); /* Adicionando leve zoom no hover */
-}
-
-.work .desc {
-  margin: 2rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.work .desc p {
-  font-size: 1.5rem;
-}
-
-.work .desc .btns {
-  display: flex;
-  justify-content: space-between;
+/* Descrição com altura fixa - Ajustado */
+.work .box-container .box .content .desc {
   width: 100%;
-  margin-top: 2rem;
+  padding: 2rem 1rem;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
 }
 
-.work .desc .btns .btn {
-  line-height: 0;
-  display: inline;
-  padding: 1.5rem 2.5rem;
-  border-radius: .5rem;
+.work .box-container .box .content .desc p {
   font-size: 1.5rem;
-  color: #fff;
-  background: rgb(12, 12, 12);
-  margin-right: 2rem;
+  line-height: 1.6;
+  margin: 0;
 }
 
-.work .desc .btns .btn:hover {
-  background: #310ae0f5;
+/* Efeito hover ajustado */
+.work .box-container .box:hover .content {
+  transform: translateY(0);
+}
+
+.work .box-container .box:hover .content .desc {
+  opacity: 1;
+}
+
+/* Mantendo as mesmas configurações de tamanho */
+.work .box-container .box:nth-child(1),
+.work .box-container .box:nth-child(2) {
+  flex: 1 1 48%;
+  height: 40rem;
+}
+
+.work .box-container .box:nth-child(3),
+.work .box-container .box:nth-child(4),
+.work .box-container .box:nth-child(5) {
+  flex: 1 1 32%;
+  height: 30rem;
+}
+
+/* Resto do código permanece igual */
+.work .desc .btns {
+  display: none;
 }
 
 .work .viewall {
   display: flex;
   justify-content: center;
+  margin-top: 4rem;
 }
 
 .work .viewall .btn {
@@ -337,6 +337,8 @@ section{
   border: 2px solid #fff;
   box-shadow: 0px 5px 10px rgba(65, 84, 241, 0.4);
   text-align: center;
+  width: 100%;
+  max-width: 300px;
 }
 
 .work .viewall .btn span {
@@ -360,43 +362,34 @@ section{
   transform: translateX(5px);
 }
 
-/* Responsive layout for 2 large boxes on top and 3 smaller boxes below */
-.work .box-container .box:nth-child(1),
-.work .box-container .box:nth-child(2) {
-  flex: 1 1 48%; /* Large boxes take 48% width */
-  height: 35rem; /* Aumenta a altura das caixas grandes */
-}
-
-.work .box-container .box:nth-child(3),
-.work .box-container .box:nth-child(4),
-.work .box-container .box:nth-child(5) {
-  flex: 1 1 32%; /* Smaller boxes take 32% width */
-  height: 25rem; /* Aumenta a altura das caixas pequenas */
-}
-
 @media (max-width: 768px) {
   .work .box-container .box:nth-child(1),
-  .work .box-container .box:nth-child(2) {
-    flex: 1 1 100%; /* Full width for large boxes on smaller screens */
-    height: 25rem; /* Ajusta altura das caixas grandes */
-  }
-
+  .work .box-container .box:nth-child(2),
   .work .box-container .box:nth-child(3),
   .work .box-container .box:nth-child(4),
   .work .box-container .box:nth-child(5) {
-    flex: 1 1 100%; /* Full width for smaller boxes on smaller screens */
-    height: 25rem; /* Mantém a altura das caixas pequenas */
+    flex: 1 1 100%;
+    height: 30rem;
   }
 }
 /* work section ends */
 
-
+ 
 /* experience section starts */
 .experience .timeline {
   position: relative;
   max-width: 1200px;
   margin: 0 auto;
 }
+.experience h2 {
+  display: block;
+  text-align: center; /* Centraliza o texto */
+  margin: 0 auto; /* Garante que o título fique centralizado */
+  padding: 1rem;
+  font-size: 2.5rem;
+  max-width: 90%; /* Limita a largura do título */
+}
+
 .experience .timeline::after {
   content: '';
   position: absolute;
@@ -416,7 +409,7 @@ section{
 }
 /*circles on timeline*/
 .experience .container::after {    
-  content: "\f0b1";
+  content: "\f02d";
   position: absolute;
   width: 25px;
   height: 25px;
@@ -424,7 +417,7 @@ section{
   background-color: rgb(239, 233, 233);
   border: 4px solid #0f46a2;
   top: 15px;
-  border-radius: 50%;
+  border-radius:30%;
   z-index: 100;
   font-size: 1.89rem;
   text-align: center;
@@ -563,7 +556,7 @@ section{
 /* experience media queries ends */
 /* experience section ends */
 
-/* Centralizar a seção de contato */
+/* Início da seção contato */
 .contact {
   background: #e5ecfb;
   min-height: 60vh;
@@ -573,6 +566,12 @@ section{
   align-items: center;
   text-align: center; /* Garante que o texto do título fique centralizado */
   padding-top: 3rem; /* Espaço acima */
+}
+
+.heading {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem; /* Define o espaçamento entre o ícone e o texto */
 }
 
 /* Ajustar o título */
@@ -772,3 +771,4 @@ form .button-area {
     margin-right: 0;
   }
 }
+/* Final contato */
