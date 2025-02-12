@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { HeaderComponent } from "../homePages/header/header.component";
-import { HomeContentComponent } from "../homePages/home-content/home-content.component";
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone:true,
-  imports: [HeaderComponent, HomeContentComponent],
+  imports: [HeaderComponent, RouterModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
