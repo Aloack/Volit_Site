@@ -6,89 +6,16 @@
     left: 0;
     z-index: -1; 
   }
-
+ 
   #banana{
-    height: 100vh;
+    height: 80vh;
   }
-
-  /* about section starts */
-.about {
-    background: rgb(255, 255, 255);
-  }
-  .about .row{
-    display: flex;
-    flex-direction: row;
-    gap: 2rem;
-    flex-wrap: wrap;
-    padding: 4rem;
-  }
-  .about .row .image {
-    text-align: center;
-    flex: 1 1 35rem;
-  }
-  .about .row .image img{
-    margin: 4rem;
-    width: 30rem;
-    border-radius: 5%;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.6);
-    mix-blend-mode:luminosity;
-    transition: .3s;
-    cursor: pointer;
-  }
-  .about .row .image img:hover{
-    mix-blend-mode: normal;
-  }
-  .about .row .content {
-    flex: 1 1 45rem;
-    padding: 3rem;
-  }
-  .about .row .content h3{
-    color: rgb(27, 27, 27);
-    font-size: 2.5rem;
-  }
-  .about .row .content .tag{
-    font-size: 1.4rem;
-    color: #020133;
-    font-weight: 600;
-    margin-top: 1rem;
-  }
-  .about .row .content p{
-    font-size: 1.5rem;
-    margin-top: 1.5rem;
-    font-family: 'Nunito';
-    font-weight: 600;
-  }
-  .about .row .content .box-container{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    font-family: 'Nunito';
-    font-weight: 600;
-  }
-  .about .row .content .box-container .box p{
-    text-transform: none;
-  }
-  .about .row .content .box-container .box p span{
-    color:#424fc9;
-  }
-  
-  .home #particles-js{
-    position: absolute;
-    top: 0;left: 0;
-    height: 100%;
-    width: 100%;
-  }
-
-
-
-
-
 
 
 /* work section starts */
 .work {
   background: linear-gradient(to bottom, #2121e2, #00002c);
-  padding: 4rem 0; /* Espaçamento extra nas laterais */
+  padding: 6rem 8rem; /* Aumentei o padding lateral para mais espaço nas laterais */
 }
 
 .work h2 {
@@ -103,9 +30,9 @@
 .work .box-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.5rem;
+  gap: 2rem; /* Aumentei o espaçamento entre as caixas */
   margin: 0 auto; /* Centraliza o container */
-  width: 90%; /* Deixa as caixas mais afastadas das laterais */
+  width: 90%; /* Mantém as caixas afastadas das laterais */
   justify-content: center; /* Centraliza as caixas dentro do container */
 }
 
@@ -114,7 +41,7 @@
   border-radius: .5rem;
   box-shadow: 0 .5rem 1rem rgba(225, 219, 219, 0.895);
   overflow: hidden;
-  transition: transform 0.3s ease; /* Adicionando transição ao hover */
+  transition: transform 0.8s ease-in-out; /* Tempo aumentado para animação mais suave */
 }
 
 .work .box-container .box img {
@@ -127,70 +54,64 @@
   height: 100%;
   width: 100%;
   position: absolute;
-  top: 85%;
+  top: 0;
   left: 0;
   background: rgba(255, 255, 255, 0.9);
   display: flex;
   flex-direction: column;
+  justify-content: flex-end; /* Coloca o conteúdo na parte inferior */
 }
 
 .work .box-container .box .content .tag {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  height: 4.5rem;
-  width: 100%;
-  padding-left: 1rem;
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center; /* Centraliza verticalmente */
+  height: 4rem; /* Altura da tag */
   background: #0f46a2;
+  width: 100%;
+  transform: translateY(100%); /* A tag começa escondida, fora da tela */
+  transition: transform 0.8s ease-in-out; /* Animação suave para a tag */
+  padding-bottom: 0.5rem; /* Deixa a tag um pouco mais distante do fundo */
 }
 
 .work .box-container .box .content .tag h3 {
-  font-size: 2rem;
+  font-size: 1.8rem; /* Ajustei o tamanho da fonte para ficar proporcional */
   color: white;
+  margin: 0;
 }
 
-.work .box-container .box:hover .content {
-  top: 25%;
-  transform: scale(1.05); /* Adicionando leve zoom no hover */
-}
-
-.work .desc {
-  margin: 2rem;
+.work .box-container .box .content .desc {
+  margin: 0 1rem 1rem 1rem; /* Adicionando preenchimento para afastar a descrição das laterais */
   display: flex;
   flex-direction: column;
   justify-content: center;
+  height: 12rem; /* Reduzi a altura da descrição */
+  transform: translateY(100%); /* Descrição começa escondida */
+  transition: transform 0.8s ease-in-out; /* Animação suave para a descrição */
 }
 
-.work .desc p {
+.work .box-container .box .content .desc p {
   font-size: 1.5rem;
+  line-height: 1.6;
+  margin: 0; /* Remove qualquer margem */
+}
+
+.work .box-container .box:hover .content .tag {
+  transform: translateY(0); /* A tag sobe quando passa o mouse */
+}
+
+.work .box-container .box:hover .content .desc {
+  transform: translateY(0); /* Descrição sobe quando passa o mouse */
 }
 
 .work .desc .btns {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  margin-top: 2rem;
-}
-
-.work .desc .btns .btn {
-  line-height: 0;
-  display: inline;
-  padding: 1.5rem 2.5rem;
-  border-radius: .5rem;
-  font-size: 1.5rem;
-  color: #fff;
-  background: rgb(12, 12, 12);
-  margin-right: 2rem;
-}
-
-.work .desc .btns .btn:hover {
-  background: #310ae0f5;
+  display: none; /* Remove os botões */
 }
 
 .work .viewall {
   display: flex;
   justify-content: center;
+  margin-top: 4rem; /* Aumentei a margem superior para mover o botão para baixo */
 }
 
 .work .viewall .btn {
@@ -204,6 +125,8 @@
   border: 2px solid #fff;
   box-shadow: 0px 5px 10px rgba(65, 84, 241, 0.4);
   text-align: center;
+  width: 100%; /* Torna o botão mais largo */
+  max-width: 300px; /* Limita a largura máxima para não ficar excessivamente largo */
 }
 
 .work .viewall .btn span {
@@ -230,29 +153,29 @@
 /* Responsive layout for 2 large boxes on top and 3 smaller boxes below */
 .work .box-container .box:nth-child(1),
 .work .box-container .box:nth-child(2) {
-  flex: 1 1 48%; /* Large boxes take 48% width */
-  height: 35rem; /* Aumenta a altura das caixas grandes */
+  flex: 1 1 48%; /* Caixas grandes ocupam 48% da largura */
+  height: 40rem; /* Aumenta a altura das caixas grandes */
 }
 
 .work .box-container .box:nth-child(3),
 .work .box-container .box:nth-child(4),
 .work .box-container .box:nth-child(5) {
-  flex: 1 1 32%; /* Smaller boxes take 32% width */
-  height: 25rem; /* Aumenta a altura das caixas pequenas */
+  flex: 1 1 32%; /* Caixas pequenas ocupam 32% da largura */
+  height: 30rem; /* Aumenta a altura das caixas pequenas */
 }
 
 @media (max-width: 768px) {
   .work .box-container .box:nth-child(1),
   .work .box-container .box:nth-child(2) {
-    flex: 1 1 100%; /* Full width for large boxes on smaller screens */
-    height: 25rem; /* Ajusta altura das caixas grandes */
+    flex: 1 1 100%; /* Caixas grandes ocupam 100% da largura em telas pequenas */
+    height: 30rem; /* Ajustei a altura para mais equilibrado */
   }
 
   .work .box-container .box:nth-child(3),
   .work .box-container .box:nth-child(4),
   .work .box-container .box:nth-child(5) {
-    flex: 1 1 100%; /* Full width for smaller boxes on smaller screens */
-    height: 25rem; /* Mantém a altura das caixas pequenas */
+    flex: 1 1 100%; /* Caixas pequenas ocupam 100% da largura em telas pequenas */
+    height: 30rem; /* Mantém a altura mais alta para evitar o achatamento */
   }
 }
 /* work section ends */
@@ -263,6 +186,13 @@
   position: relative;
   max-width: 1200px;
   margin: 0 auto;
+}
+.experience h2 {
+  text-align: center; /* Centraliza o texto */
+  margin: 0 auto; /* Garantir que o título fique centralizado */
+  padding: 1rem;
+  font-size: 2.5rem;
+  max-width: 90%;
 }
 .experience .timeline::after {
   content: '';
@@ -430,7 +360,7 @@
 /* experience media queries ends */
 /* experience section ends */
 
-/* Centralizar a seção de contato */
+/* Início da seção contato */
 .contact {
   background: #e5ecfb;
   min-height: 60vh;
@@ -639,3 +569,4 @@ form .button-area {
     margin-right: 0;
   }
 }
+/* Final contato */
