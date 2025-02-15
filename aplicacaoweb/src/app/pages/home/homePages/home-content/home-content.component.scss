@@ -1,4 +1,4 @@
-#particles-js {
+    #particles-js {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -286,6 +286,7 @@ section{
 
 
 /* work section starts */
+/* work section starts */
 .work {
   background: linear-gradient(to bottom, #2121e2, #00002c);
   padding: 6rem 8rem;
@@ -312,20 +313,21 @@ section{
   gap: 2rem;
   margin: 0 auto;
   width: 90%;
-  justify-content: center;
+  justify-content: space-between; /* Isso distribui as caixas uniformemente */
 }
 
 .work .box-container .box {
   position: relative;
-  display: flex; /* Torna o contêiner flexível */
-  justify-content: center; /* Centraliza horizontalmente */
-  align-items: center; /* Centraliza verticalmente */
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 0.5rem;
   box-shadow: 0 0.5rem 1rem rgba(225, 219, 219, 0.895);
   overflow: hidden;
   transition: transform 0.8s ease-in-out;
-  height: 100%; /* Ou defina uma altura específica se necessário */
-  width: 100%;  /* Para garantir que o contêiner ocupe toda a largura disponível */
+  height: 40rem;  /* Definir altura fixa para todas as caixas */
+  width: 32%;  /* Garantir que todas as caixas tenham o mesmo tamanho (aproximadamente 3 em cada linha) */
+  max-width: 32%; /* Para garantir que se ajuste ao tamanho da tela */
 }
 
 .work .box-container .box img {
@@ -334,9 +336,7 @@ section{
   object-fit: cover;
 }
 
-
-
-/* Área da tag e descrição - Ajustado */
+/* Restante do código para a descrição e tag do box */
 .work .box-container .box .content {
   position: absolute;
   bottom: 0;
@@ -350,7 +350,6 @@ section{
   transition: transform 0.8s ease-in-out;
 }
 
-/* Tag sempre visível - Ajustado */
 .work .box-container .box .content .tag {
   position: absolute;
   bottom: 100%;
@@ -360,7 +359,6 @@ section{
   transition: transform 0.8s ease-in-out;
 }
 
-/* Texto da tag */
 .work .box-container .box .content .tag h3 {
   font-size: 1.8rem;
   color: white;
@@ -368,7 +366,6 @@ section{
   text-align: center;
 }
 
-/* Descrição com altura fixa - Ajustado */
 .work .box-container .box .content .desc {
   width: 100%;
   padding: 2rem 1rem;
@@ -382,32 +379,12 @@ section{
   margin: 0;
 }
 
-/* Efeito hover ajustado */
 .work .box-container .box:hover .content {
   transform: translateY(0);
 }
 
 .work .box-container .box:hover .content .desc {
   opacity: 1;
-}
-
-/* Mantendo as mesmas configurações de tamanho */
-.work .box-container .box:nth-child(1),
-.work .box-container .box:nth-child(2) {
-  flex: 1 1 48%;
-  height: 40rem;
-}
-
-.work .box-container .box:nth-child(3),
-.work .box-container .box:nth-child(4),
-.work .box-container .box:nth-child(5) {
-  flex: 1 1 32%;
-  height: 30rem;
-}
-
-/* Resto do código permanece igual */
-.work .desc .btns {
-  display: none;
 }
 
 .work .viewall {
@@ -453,16 +430,15 @@ section{
 }
 
 @media (max-width: 768px) {
-  .work .box-container .box:nth-child(1),
-  .work .box-container .box:nth-child(2),
-  .work .box-container .box:nth-child(3),
-  .work .box-container .box:nth-child(4),
-  .work .box-container .box:nth-child(5) {
+  /* Ajuste para dispositivos menores: manter apenas 1 item por linha */
+  .work .box-container .box {
     flex: 1 1 100%;
-    height: 30rem;
+    height: 30rem; /* Ajustar altura para dispositivos menores */
   }
 }
+
 /* work section ends */
+
 
  
 /* experience section starts */
