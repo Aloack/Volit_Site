@@ -239,7 +239,7 @@ section{
 }
 .skills .container .row {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   flex-wrap: wrap;
   gap: 1.8rem;
 }
@@ -257,7 +257,7 @@ section{
 }
 
 .skills .container .bar .info img {
-  width: 200px;
+  width: 65%;
   height: auto;
   justify-content: center;
   align-content: center;
@@ -287,6 +287,20 @@ section{
   padding-top: 10px;
 }
 
+
+/* Quando a tela for menor, usa 2 imagens por linha */
+@media (max-width: 950px) {
+  .skills .container .row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Quando a tela for bem pequena, usa 1 imagem por linha */
+@media (max-width: 500px) {
+  .skills .container .row {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
 
 
 
