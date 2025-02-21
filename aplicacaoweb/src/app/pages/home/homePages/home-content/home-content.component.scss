@@ -13,8 +13,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1rem; /* Diminuído o gap */
-  min-height: 50vh; /* Diminuído o mínimo de altura */
+  gap: 5rem; 
+  min-height: 65vh; 
   width: 100%;
 }
 
@@ -28,7 +28,7 @@
 /* Ajuste do tamanho e posicionamento da logo */
 .home .logo img {
   position: absolute;
-  top: 20%;
+  top: 27%;
   left: 30%;
   width: 250px;
   height: auto;
@@ -250,7 +250,7 @@
   gap: 3rem;
   margin: 0 auto;
   width: 90%;
-  justify-content: space-between; /* Isso distribui as caixas uniformemente */
+  justify-content: space-between;
 }
 
 .work .box-container .box {
@@ -262,9 +262,9 @@
   box-shadow: 0 0.5rem 1rem rgba(241, 236, 236, 0.973);
   overflow: hidden;
   transition: transform 0.8s ease-in-out;
-  height: 45rem;  /* Definir altura fixa para todas as caixas */
-  width: 50%;  /* Garantir que todas as caixas tenham o mesmo tamanho (aproximadamente 3 em cada linha) */
-  max-width: 32%; /* Para garantir que se ajuste ao tamanho da tela */
+  height: 45rem;
+  width: calc(33.333% - 2rem); /* Adjusted for better spacing */
+  max-width: 100%; /* Changed from 32% to allow full width on mobile */
 }
 
 .work .box-container .box img {
@@ -273,7 +273,6 @@
   object-fit: cover;
 }
 
-/* Restante do código para a descrição e tag do box */
 .work .box-container .box .content {
   position: absolute;
   bottom: 0;
@@ -324,61 +323,63 @@
   opacity: 1;
 }
 
-.work .viewall {
-  display: flex;
-  justify-content: center;
-  margin-top: 4rem;
-}
-
-.work .viewall .btn {
-  position: relative;
-  line-height: 0;
-  padding: 1.6rem 3rem;
-  border-radius: .5em;
-  transition: 0.5s;
-  color: rgb(255, 255, 255);
-  font-weight: 700;
-  border: 2px solid #fff;
-  box-shadow: 0px 5px 10px rgba(65, 84, 241, 0.4);
-  text-align: center;
-  width: 100%;
-  max-width: 300px;
-}
-
-.work .viewall .btn span {
-  font-weight: 600;
-  font-size: 1.7rem;
-  font-family: 'Nunito', sans-serif;
-}
-
-.work .viewall .btn i {
-  margin-left: 0.3rem;
-  font-size: 1.5rem;
-  transition: 0.3s;
-}
-
-.work .viewall .btn:hover {
-  background: #fff;
-  color: #000;
-}
-
-.work .viewall .btn:hover i {
-  transform: translateX(5px);
-}
-
-/* Responsividade para telas pequenas */
-@media (max-width: 768px) {
+/* Responsive Design */
+@media screen and (max-width: 1200px) {
+  .work {
+    padding: 4rem 4rem;
+  }
+  
   .work .box-container .box {
-    flex: 1 1 100%; /* Garantir que fique em uma coluna única */
-    height: auto; /* Ajustar a altura para se adaptar ao conteúdo */
-    width: 100%;  /* Tamanho 100% da tela */
+    width: calc(50% - 1.5rem); /* 2 items per row */
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .work {
+    padding: 3rem 2rem;
   }
 
   .work h2 {
-    font-size: 2rem; /* Ajustar título para telas menores */
+    font-size: 2.5rem;
+    padding: 10px;
+  }
+
+  .work .box-container {
+    gap: 2rem;
+    width: 100%;
+  }
+
+  .work .box-container .box {
+    width: 100%; /* 1 item per row */
+    height: 40rem;
+  }
+
+  .work .box-container .box .content .tag h3 {
+    font-size: 1.5rem;
+  }
+
+  .work .box-container .box .content .desc p {
+    font-size: 1.3rem;
   }
 }
 
+@media screen and (max-width: 480px) {
+  .work {
+    padding: 2rem 1rem;
+  }
+
+  .work h2 {
+    font-size: 2rem;
+  }
+
+  .work .box-container .box {
+    height: 35rem;
+  }
+
+  .work .box-container .box .content .desc {
+    padding: 1rem;
+  }
+}
 /* work section ends */
 
 
