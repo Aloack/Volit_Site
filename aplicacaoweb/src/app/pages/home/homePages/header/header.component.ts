@@ -9,4 +9,9 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
 
+  menuAberto = false;
+
+  toggleMenu() {
+    this.menuAberto = !this.menuAberto;
+  }
 }
