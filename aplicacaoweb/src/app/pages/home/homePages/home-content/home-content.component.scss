@@ -150,7 +150,7 @@
 
 .skills .container .row {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   flex-wrap: wrap;
   gap: 1.8rem;
 }
@@ -169,7 +169,7 @@
 }
 
 .skills .container .bar .info img {
-  width: 200px;
+  width: 65%;
   height: auto;
   justify-content: center;
   align-content: center;
@@ -186,6 +186,46 @@
   height: 100%;
   min-height: 150px;
 }
+
+
+.skills .container .bar .info i {
+  font-size: 4rem;
+}
+.skills .container .bar .info span {
+  margin-top: auto;
+  font-size: 1.5rem;
+  font-weight: 500;
+  font-family: "Poppins";
+  text-align: center;
+  padding-top: 10px;
+}
+
+
+/* Quando a tela for menor, usa 2 imagens por linha */
+@media (max-width: 950px) {
+  .skills .container .row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Quando a tela for bem pequena, usa 1 imagem por linha */
+@media (max-width: 500px) {
+  .skills .container .row {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+
+
+
+
+  .home #particles-js{
+    position: absolute;
+    top: 0;left: 0;
+    height: 100%;
+    width: 100%;
+  }
+
 
 /* work section starts */
 .work {
