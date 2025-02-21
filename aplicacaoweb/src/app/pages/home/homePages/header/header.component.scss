@@ -3,9 +3,7 @@ header {
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 1000;
-  display: flex;
   align-items: center;
-  justify-content: center;
   padding: 1.7rem 10%;
   height: 6.5rem;
   background-color: #fff;
@@ -49,7 +47,7 @@ header {
 .navbar ul li a:hover {
   color: #01ccff;
   border-bottom: .2rem solid #01ccff;
-  padding: .5rem 0;
+  padding: .5rem 1;
 }
 
 /* Responsivo */
