@@ -198,21 +198,16 @@
   text-align: center;
   margin: 0 auto;
   color: #ffffff;
-  padding: 0rem;
   font-size: 3.5rem;
   padding: 20px;
   max-width: 90%;
   margin-bottom: 2rem;
 }
 
-.work .heading span {
-  color: rgb(255, 230, 0);
-}
-
 .work .box-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 2rem;
+  gap: 3rem;
   margin: 0 auto;
   width: 90%;
   justify-content: space-between; /* Isso distribui as caixas uniformemente */
@@ -224,11 +219,11 @@
   justify-content: center;
   align-items: center;
   border-radius: 0.5rem;
-  box-shadow: 0 0.5rem 1rem rgba(225, 219, 219, 0.895);
+  box-shadow: 0 0.5rem 1rem rgba(241, 236, 236, 0.973);
   overflow: hidden;
   transition: transform 0.8s ease-in-out;
-  height: 40rem;  /* Definir altura fixa para todas as caixas */
-  width: 32%;  /* Garantir que todas as caixas tenham o mesmo tamanho (aproximadamente 3 em cada linha) */
+  height: 45rem;  /* Definir altura fixa para todas as caixas */
+  width: 50%;  /* Garantir que todas as caixas tenham o mesmo tamanho (aproximadamente 3 em cada linha) */
   max-width: 32%; /* Para garantir que se ajuste ao tamanho da tela */
 }
 
@@ -351,39 +346,39 @@
 /* Início da seção contato */
 .contact {
   background: #e5ecfb;
-  min-height: 60vh;
+  min-height: 50vh;
   display: flex;
   flex-direction: column; /* Empilha o conteúdo verticalmente */
   justify-content: center;
   align-items: center;
   text-align: center; /* Garante que o texto do título fique centralizado */
-  padding-top: 3rem; /* Espaço acima */
+  padding-top: 4rem; /* Espaço acima */
 }
 
 .contact .heading {
   display: flex;
   align-items: center;
-  gap: 0.7rem; /* Define o espaçamento entre o ícone e o texto */
+  gap: 1rem; /* Define o espaçamento entre o ícone e o texto */
 }
 
 /* Ajustar o título */
 .contact h2.heading {
-  font-size: 2.5rem;
+  font-size: 3.5rem;
   margin-bottom: 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #333;
+  color: #000000;
 }
 
 /* Ajustar o contêiner para centralizar o conteúdo */
 .contact .container {
-  max-width: 1050px;
+  max-width: 700px;
   width: 100%;
   background: #fff;
   border-radius: 1.5rem;
   margin: 2rem;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 5px 10px rgb(77, 55, 125);
   display: flex;
   justify-content: center;
   align-items: center; /* Alinha verticalmente o conteúdo */
@@ -399,11 +394,6 @@
   justify-content: center;
   width: 100%;
   gap: 2rem; /* Espaço entre a imagem e o formulário */
-}
-
-.contact .content .image-box {
-  max-width: 60%;
-  display: block;
 }
 
 .contact .content .image-box img {
