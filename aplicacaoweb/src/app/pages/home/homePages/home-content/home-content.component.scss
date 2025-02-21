@@ -7,52 +7,28 @@
     z-index: -1; 
   }
 
- /* hero section starts */
+/* hero section starts */
 .home {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 2rem;
-  min-height: 65vh;
-  width: 100%;
-}
-
-.home::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
+  gap: 1rem; /* Diminuído o gap */
+  min-height: 50vh; /* Diminuído o mínimo de altura */
   width: 100%;
 }
 
 .home .content {
-  flex: 1 1 40rem;
-  padding-top: 10rem;
+  flex: 1 1 30rem; /* Diminuído a largura mínima */
+  padding-top: 5rem; /* Menos espaço acima */
   z-index: 1;
   text-align: center;
-}
-
-.home .content p {
-  font-size: 2.5rem;
-  color: #000;
-  font-weight: 600;
-  padding: 1rem 0;
-}
-
-.home .content p span {
-  font-size: 2.5rem;
-  color: rgba(166, 101, 201, 0);
-  font-weight: 600;
-  padding: 1rem 0;
 }
 
 /* Ajuste do tamanho e posicionamento da logo */
 .home .logo img {
   position: absolute;
-  top: 30%;
+  top: 20%;
   left: 30%;
   width: 250px;
   height: auto;
@@ -92,92 +68,34 @@
 
 /* about section starts */
 .about {
+  padding: 1%;
   background: rgb(227, 235, 250);
 }
 .about .row{
   display: flex;
   flex-direction: row;
-  gap: 2rem;
-  flex-wrap: wrap;
-  padding: 4rem;
+  padding: 5rem;
+  margin: 3rem;
+  width: auto;
 }
-.about .row .image {
-  text-align: center;
-  flex: 1 1 35rem;
-}
-.about .row .image img{
-  margin: 4rem;
-  width: 30rem;
-  border-radius: 5%;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.6);
-  mix-blend-mode:luminosity;
-  transition: .3s;
-  cursor: pointer;
-}
-.about .row .image img:hover{
-  mix-blend-mode: normal;
-}
-.about .row .content {
-  flex: 1 1 45rem;
-  padding: 3rem;
-}
+
 .about .row .content h3{
   color: rgb(27, 27, 27);
-  font-size: 2.5rem;
+  font-size: 3rem;
 }
 .about .row .content .tag{
-  font-size: 1.4rem;
+  font-size: 2.5rem;
   color: #020133;
   font-weight: 600;
   margin-top: 1rem;
 }
 .about .row .content p{
-  font-size: 1.5rem;
-  margin-top: 1.5rem;
+  font-size: 2rem;
+  margin-top: 2rem;
   font-family: 'Nunito';
   font-weight: 600;
 }
-.about .row .content .box-container{
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  font-family: 'Nunito';
-  font-weight: 600;
-}
-.about .row .content .box-container .box p{
-  text-transform: none;
-}
-.about .row .content .box-container .box p span{
-  color:#424fc9;
-}
-.resumebtn{
-  margin-top: 6rem;
-}
-.resumebtn .btn {
-  padding: 1.7rem 3rem;
-  border-radius: .5em;
-  transition: 0.3s;
-  color: #fff;
-  background: #3a18d2f5;
-  box-shadow: 0px 5px 10px rgba(7, 7, 1, 0.6);
-  font-family: 'Nunito', sans-serif;
-}
-.resumebtn .btn span {
-  font-weight: 600;
-  font-size: 1.8rem;
-  letter-spacing: 0.1rem;
-}
-.resumebtn .btn i {
-  margin-left: 0.3rem;
-  font-size: 1.2rem;
-  transition: 0.3s;
-}
-.resumebtn .btn:hover{
-  background: #1a047e;
-}
-.resumebtn .btn:hover i {
-  transform: translateX(5px);
-}
+
 /* about media queries starts*/
 @media screen and (max-width: 600px){
   .about .row .image{
@@ -200,60 +118,54 @@
   }
 }
 /* about media queries ends*/
+
 /* about section ends */
   
 
 
-section{
- /* min-height: 100vh;*/
-  padding: 2rem 9%;
-}
 .heading{
   font-size: 3.5rem;
   color: rgb(10, 10, 10);
   font-weight: 800;
   text-align: center;
 }
-.heading span{
-  color: rgb(115, 3, 167);
-}
 
 .skills {
-  min-height: 65vh;
+  min-height: 25vh;
   background: linear-gradient(to bottom, #bd91e4, #7352a5);
 }
+
 .skills h2 {
-  color: #fff;
+  color: #ffffff;
 }
-.skills .heading span {
-  color: rgb(255, 230, 0);
-}
+
 .skills .container {
-  background: rgba(0, 0, 22, 0.4);
-  color: #fff;
-  border-radius: 4rem;
-  padding: 2rem;
-  width: 90%;
+  background: rgba(43, 181, 199, 0.205);
+  border-radius: 8rem;
+  padding: 3rem;
+  width: 83%;
   margin: auto;
   margin-top: 2rem;
 }
+
 .skills .container .row {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   flex-wrap: wrap;
   gap: 1.8rem;
 }
+
 .skills .container .bar {
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   padding: 10px;
-  border-radius: 1rem;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  background: rgba(0, 0, 22, 0.9);
+  border-radius: 4rem;
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.582);
+  background: rgba(0, 0, 0, 0.9);
   transition: 0.2s;
 }
 .skills .container .bar:hover {
-  box-shadow: 0 8px 10px rgba(0, 2, 68, 0.8) !important;
-  background-color: rgba(0, 0, 0, 0.9) !important;
+  box-shadow: 0 8px 10px rgba(15, 184, 196, 0.8) !important;
+  background-color: rgb(118, 192, 232) !important;
 }
 
 .skills .container .bar .info img {
@@ -274,6 +186,7 @@ section{
   height: 100%;
   min-height: 150px;
 }
+
 
 .skills .container .bar .info i {
   font-size: 4rem;
@@ -324,21 +237,17 @@ section{
   display: block;
   text-align: center;
   margin: 0 auto;
-  color: #fff;
-  padding: 0rem;
-  font-size: 2.5rem;
+  color: #ffffff;
+  font-size: 3.5rem;
+  padding: 20px;
   max-width: 90%;
   margin-bottom: 2rem;
-}
-
-.work .heading span {
-  color: rgb(255, 230, 0);
 }
 
 .work .box-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 2rem;
+  gap: 3rem;
   margin: 0 auto;
   width: 90%;
   justify-content: space-between; /* Isso distribui as caixas uniformemente */
@@ -350,11 +259,11 @@ section{
   justify-content: center;
   align-items: center;
   border-radius: 0.5rem;
-  box-shadow: 0 0.5rem 1rem rgba(225, 219, 219, 0.895);
+  box-shadow: 0 0.5rem 1rem rgba(241, 236, 236, 0.973);
   overflow: hidden;
   transition: transform 0.8s ease-in-out;
-  height: 40rem;  /* Definir altura fixa para todas as caixas */
-  width: 32%;  /* Garantir que todas as caixas tenham o mesmo tamanho (aproximadamente 3 em cada linha) */
+  height: 45rem;  /* Definir altura fixa para todas as caixas */
+  width: 50%;  /* Garantir que todas as caixas tenham o mesmo tamanho (aproximadamente 3 em cada linha) */
   max-width: 32%; /* Para garantir que se ajuste ao tamanho da tela */
 }
 
@@ -457,53 +366,59 @@ section{
   transform: translateX(5px);
 }
 
+/* Responsividade para telas pequenas */
 @media (max-width: 768px) {
-  /* Ajuste para dispositivos menores: manter apenas 1 item por linha */
   .work .box-container .box {
-    flex: 1 1 100%;
-    height: 30rem; /* Ajustar altura para dispositivos menores */
+    flex: 1 1 100%; /* Garantir que fique em uma coluna única */
+    height: auto; /* Ajustar a altura para se adaptar ao conteúdo */
+    width: 100%;  /* Tamanho 100% da tela */
+  }
+
+  .work h2 {
+    font-size: 2rem; /* Ajustar título para telas menores */
   }
 }
 
 /* work section ends */
 
 
+
 /* Início da seção contato */
 .contact {
   background: #e5ecfb;
-  min-height: 60vh;
+  min-height: 50vh;
   display: flex;
   flex-direction: column; /* Empilha o conteúdo verticalmente */
   justify-content: center;
   align-items: center;
   text-align: center; /* Garante que o texto do título fique centralizado */
-  padding-top: 3rem; /* Espaço acima */
+  padding-top: 4rem; /* Espaço acima */
 }
 
 .contact .heading {
   display: flex;
   align-items: center;
-  gap: 0.7rem; /* Define o espaçamento entre o ícone e o texto */
+  gap: 1rem; /* Define o espaçamento entre o ícone e o texto */
 }
 
 /* Ajustar o título */
 .contact h2.heading {
-  font-size: 2.5rem;
+  font-size: 3.5rem;
   margin-bottom: 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #333;
+  color: #000000;
 }
 
 /* Ajustar o contêiner para centralizar o conteúdo */
 .contact .container {
-  max-width: 1050px;
+  max-width: 700px;
   width: 100%;
   background: #fff;
   border-radius: 1.5rem;
   margin: 2rem;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 5px 10px rgb(77, 55, 125);
   display: flex;
   justify-content: center;
   align-items: center; /* Alinha verticalmente o conteúdo */
@@ -519,11 +434,6 @@ section{
   justify-content: center;
   width: 100%;
   gap: 2rem; /* Espaço entre a imagem e o formulário */
-}
-
-.contact .content .image-box {
-  max-width: 60%;
-  display: block;
 }
 
 .contact .content .image-box img {

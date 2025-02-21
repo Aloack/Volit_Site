@@ -1,22 +1,15 @@
 <header>
-    <div id="menu-icon" (click)="toggleMenu()">
-      <i class="fas fa-bars"></i> <!-- Ícone do menu -->
-    </div>
-    <nav class="navbar" [class.show]="menuAberto">
-      <ul>
-        <li><a class="active" href="#home">Home</a></li>
-        <li><a href="#sobre">Sobre</a></li>
-        <li><a href="#servicos">Serviços</a></li>
-        <li><a href="#contato">Contato</a></li>
-        <li><a href="#suporte">Suporte</a></li>
-        <li class="dropdown"><a href="">Portal</a>
-          <ul class="dropdown-content">
-            <li><a href="#dicas">Dicas</a></li>
-            <li><a href="#videotecas">Videotecas</a></li>
-            <li><a href="#chamados">Chamados</a></li>
-          </ul>
-        </li>
-      </ul>
-    </nav>
-  </header>
-  
+  <div id="menu-icon" (click)="toggleMenu()">
+    <i class="fas fa-bars"></i>
+  </div>
+  <nav class="navbar" [class.show]="menuAberto">
+    <ul>
+      <li><a (click)="scrollToSection('home')">Home</a></li>
+      <li><a (click)="scrollToSection('sobre')">Sobre</a></li>
+      <li><a (click)="scrollToSection('aliancas')">Alianças</a></li>
+      <li><a (click)="scrollToSection('servicos')">Serviços</a></li>
+      <li><a (click)="scrollToSection('contato')">Contato</a></li>
+      <li><a (click)="scrollToSection('Portal')">Portal</a></li>
+    </ul>
+  </nav>
+</header>
