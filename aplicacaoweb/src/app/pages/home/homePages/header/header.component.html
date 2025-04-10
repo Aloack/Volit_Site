@@ -1,21 +1,28 @@
 <header>
-  <div id="menu-icon" (click)="toggleMenu()">
-    <i class="fas fa-bars"></i>
+  <div class="header-container">
+    <div class="logo">
+      <img src="Logo completa.png" alt="Logo">
+    </div>
+    
+    <nav class="navbar" [class.show]="menuAberto">
+      <ul>
+        <li><a (click)="scrollToSection('home')">Home</a></li>
+        <li><a (click)="scrollToSection('sobre')">Sobre</a></li>
+        <li><a (click)="scrollToSection('aliancas')">Alianças</a></li>
+        <li><a (click)="scrollToSection('servicos')">Serviços</a></li>
+        <li><a (click)="scrollToSection('contato')">Contato</a></li>
+        <!-- <li class="dropdown"><a>Portal <i class="fa-sharp fa-solid fa-caret-down"></i></a>
+          <ul class="dropdown-content">
+            <li><a href="#dicas"><i class="fas fa-chevron-circle-right"></i>Dicas</a></li>
+            <li><a href="#videotecas"><i class="fas fa-chevron-circle-right"></i>Videotecas</a></li>
+            <li><a href="#chamados"><i class="fas fa-chevron-circle-right"></i>Chamados</a></li>
+          </ul>
+        </li> -->
+      </ul>
+    </nav>
+    
+    <div id="menu-icon" (click)="toggleMenu()">
+      <i class="fas fa-bars"></i>
+    </div>
   </div>
-  <nav class="navbar" [class.show]="menuAberto">
-    <ul>
-      <li><a (click)="scrollToSection('home')">Home</a></li>
-      <li><a (click)="scrollToSection('sobre')">Sobre</a></li>
-      <li><a (click)="scrollToSection('aliancas')">Alianças</a></li>
-      <li><a (click)="scrollToSection('servicos')">Serviços</a></li>
-      <li><a (click)="scrollToSection('contato')">Contato</a></li>
-      <li class="dropdown"><a>Portal <i class="fa-sharp fa-solid fa-caret-down"></i></a>
-        <ul class="dropdown-content">
-          <li><a href="#dicas"><i class="fas fa-chevron-circle-right"></i>Dicas</a></li>
-          <li><a href="#videotecas"><i class="fas fa-chevron-circle-right"></i>Videotecas</a></li>
-          <li><a href="#chamados"><i class="fas fa-chevron-circle-right"></i>Chamados</a></li>
-        </ul>
-      </li>
-    </ul>
-  </nav>
 </header>
