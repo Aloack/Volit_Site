@@ -32,6 +32,7 @@
   left: 28%;
   width: 315px;
   height: auto;
+  z-index: 2;
 }
 
 /* Ajuste da imagem dos elos */
@@ -41,17 +42,45 @@
 }
 
 /* hero media queries */
+@media (max-width: 1024px) {
+  .home .logo img {
+    width: 260px;
+    top: 26%;
+    left: 25%;
+  }
+}
+
+@media (max-width: 768px) {
+  .home .logo img {
+    width: 220px;
+    top: 20%;
+    left: 20%;
+  }
+}
+
+@media (max-width: 600px) {
+  .home .logo img {
+    width: 180px;
+    top: 15%;
+    left: 50%;
+    transform: translateX(-50%); /* Centraliza horizontalmente no mobile */
+  }
+}
+
 @media (max-width: 450px) {
+  .home .logo img {
+    width: 160px;
+    top: 12%;
+    left: 50%;
+    transform: translateX(-50%); /* Mantém centralizada */
+  }
+
   .home .btn {
     margin: 4rem 0;
   }
 
   .socials {
     margin-top: 12rem;
-  }
-
-  .home .image img {
-    margin-top: -12rem;
   }
 
   .home .content p {
@@ -69,7 +98,7 @@
 /* about section starts */
 .about {
   padding: 1%;
-  background: rgb(227, 235, 250);
+  background: rgb(255, 255, 255);
 }
 .about .row{
   display: flex;
