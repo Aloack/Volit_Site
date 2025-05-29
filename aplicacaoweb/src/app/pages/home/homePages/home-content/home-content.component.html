@@ -241,44 +241,110 @@
 </section>
 <!-- work project section ends -->
 
-<!-- contact section starts -->
+<!-- SEÇÃO DE CONTATO COMEÇA AQUI -->
 <section class="contact" id="contato">
-  <h2 class="heading"><i class="fas fa-headset"></i> Entre em contato</h2>
-  <div class="container">
-    <div class="content">
-      <div class="image-box">
-        <img
-          draggable="false"
-          src="https://img.icons8.com/hatch/80/contact.png"
-          alt="CONTATO IMG"
-        />
-      </div>
-      <form id="contact-form">
-        <div class="form-group">
-          <div class="field">
-            <input type="text" name="name" placeholder="Nome" required />
-            <i class="fas fa-user"></i>
-          </div>
-          <div class="field">
-            <input type="email" name="email" placeholder="Email" required />
-            <i class="fas fa-envelope"></i>
-          </div>
-          <div class="field">
-            <input type="tel" name="phone" placeholder="Celular" />
-            <i class="fas fa-phone-alt"></i>
-          </div>
-          <div class="message">
-            <textarea name="message" placeholder="Mensagem" required></textarea>
-            <i class="fas fa-comment-dots"></i>
-          </div>
-        </div>
-        <div class="button-area">
-          <button type="submit">
-            Enviar <i class="fa fa-paper-plane"></i>
-          </button>
-        </div>
-      </form>
+    
+    <!-- TÍTULO PRINCIPAL COM ÍCONE -->
+    <div class="contact-title">
+        <h2>
+            <i class="fas fa-headset bounce"></i>
+            Entre em Contato
+        </h2>
+        <p>Estamos aqui para ajudar você! Entre em contato conosco.</p>
     </div>
-  </div>
+
+    <!-- CONTAINER PRINCIPAL COM DUAS COLUNAS -->
+    <div class="contact-container">
+        
+        <!-- COLUNA 1: INFORMAÇÕES DE CONTATO -->
+        <div class="contact-info">
+            <h3>
+                <i class="fas fa-info-circle"></i>
+                Nossas Informações
+            </h3>
+
+            <!-- ITEM: EMAIL -->
+            <div class="info-item" (click)="copyToClipboard('volit@volit.com.br')">
+                <i class="fas fa-envelope pulse"></i>
+                <div>
+                    <div class="label">📧 Email</div>
+                    <div class="value">volit&#64;volit.com.br</div>
+                </div>
+                <i class="fas fa-copy copy-icon"></i>
+            </div>
+
+            <!-- ITEM: ENDEREÇO -->
+            <div class="info-item">
+                <i class="fas fa-map-marker-alt pulse"></i>
+                <div>
+                    <div class="label">📍 Endereço</div>
+                    <div class="value">Rua José de Carvalho 313<br>Chácara Santo Antonio</div>
+                </div>
+            </div>
+
+            <!-- ITEM: TELEFONE -->
+            <div class="info-item" (click)="callPhone('11995886880')">
+                <i class="fas fa-phone pulse"></i>
+                <div>
+                    <div class="label">📞 Telefone</div>
+                    <div class="value">(11) 99588-6880</div>
+                </div>
+                <i class="fas fa-external-link-alt"></i>
+            </div>
+
+            <!-- ITEM: HORÁRIO -->
+            <div class="info-item">
+                <i class="fas fa-clock pulse"></i>
+                <div>
+                    <div class="label">🕐 Horário</div>
+                    <div class="value">Segunda à Sexta<br>--:-- - --:--</div>
+                </div>
+            </div>
+
+            <!-- BOTÕES DE AÇÃO -->
+            <div class="action-buttons">
+                <button class="btn btn-primary" (click)="sendEmail()">
+                    <i class="fas fa-paper-plane"></i>
+                    Enviar Email
+                </button>
+                <button class="btn btn-whats" (click)="openWhatsApp()">
+                    <i class="fab fa-whatsapp"></i>
+                    WhatsApp
+                </button>
+            </div>
+        </div>
+
+        <!-- COLUNA 2: MAPA -->
+        <div class="map-container">
+            <h3>
+                <i class="fas fa-map-marked-alt"></i>
+                Nossa Localização
+            </h3>
+            
+            <div class="map-wrapper">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3655.1491799759106!2d-46.69957242361091!3d-23.634827964297436!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce50ee5287612f%3A0x7a6f0368c20012ff!2sR.%20Jos%C3%A9%20de%20Carvalho%2C%20313%20-%20Ch%C3%A1cara%20Santo%20Ant%C3%B4nio%20(Zona%20Sul)%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2004714-020!5e0!3m2!1spt-BR!2sbr!4v1748447831453!5m2!1spt-BR!2sbr"
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Localização da empresa">
+                </iframe>
+            </div>
+
+            <div class="map-info">
+                <!-- <p><strong>🚗 Como chegar:</strong> Próximo ao metrô e principais avenidas</p> -->
+                <button class="btn btn-outline" (click)="openGoogleMaps()">
+                    <i class="fas fa-directions"></i>
+                    Ver Direções
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- DECORAÇÃO: FORMAS FLUTUANTES -->
+    <div class="floating-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="shape shape-4"></div>
+    </div>
 </section>
-<!-- contact section ends -->
