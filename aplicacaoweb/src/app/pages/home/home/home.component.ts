@@ -1,15 +1,14 @@
+declare var particlesJS: any;
 import { Component } from '@angular/core';
-import { HeaderComponent } from "../homePages/header/header.component";
+import { HeaderComponent } from '../homePages/header/header.component';
 import { RouterModule } from '@angular/router';
-import { FooterComponent } from "../homePages/footer/footer.component";
+import { FooterComponent } from '../homePages/footer/footer.component';
 
 @Component({
   selector: 'app-home',
-  standalone:true,
+  standalone: true,
   imports: [HeaderComponent, RouterModule, FooterComponent],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  styleUrl: './home.component.scss',
 })
-export class HomeComponent {
-
-}
+export class HomeComponent {}
