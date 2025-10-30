@@ -32,6 +32,7 @@
   left: 28%;
   width: 315px;
   height: auto;
+  z-index: 2;
 }
 
 /* Ajuste da imagem dos elos */
@@ -41,17 +42,45 @@
 }
 
 /* hero media queries */
+@media (max-width: 1024px) {
+  .home .logo img {
+    width: 260px;
+    top: 26%;
+    left: 25%;
+  }
+}
+
+@media (max-width: 768px) {
+  .home .logo img {
+    width: 220px;
+    top: 20%;
+    left: 20%;
+  }
+}
+
+@media (max-width: 600px) {
+  .home .logo img {
+    width: 180px;
+    top: 15%;
+    left: 50%;
+    transform: translateX(-50%); /* Centraliza horizontalmente no mobile */
+  }
+}
+
 @media (max-width: 450px) {
+  .home .logo img {
+    width: 160px;
+    top: 12%;
+    left: 50%;
+    transform: translateX(-50%); /* Mantém centralizada */
+  }
+
   .home .btn {
     margin: 4rem 0;
   }
 
   .socials {
     margin-top: 12rem;
-  }
-
-  .home .image img {
-    margin-top: -12rem;
   }
 
   .home .content p {
@@ -69,7 +98,7 @@
 /* about section starts */
 .about {
   padding: 1%;
-  background: rgb(227, 235, 250);
+  background: rgb(255, 255, 255);
 }
 .about .row{
   display: flex;
@@ -373,214 +402,599 @@
 
 
 
-/* Início da seção contato */
+/* ==========================================
+   SEÇÃO PRINCIPAL DE CONTATO
+   (Como uma tela de fundo bonita)
+   ========================================== */
+
 .contact {
-  background: #e5ecfb;
-  min-height: 50vh;
-  display: flex;
-  flex-direction: column; /* Empilha o conteúdo verticalmente */
-  justify-content: center;
-  align-items: center;
-  text-align: center; /* Garante que o texto do título fique centralizado */
-  padding-top: 4rem; /* Espaço acima */
+    /* Fundo com gradiente colorido (como um pôr do sol) */
+background: linear-gradient(to bottom, #00002c, #25138B);
+    
+    min-height: 80vh;  /* Altura da tela toda */
+    padding: 4rem 2rem; /* Espaço interno */
+    
+    /* Centralizar tudo como uma caixa */
+    display: flex;
+    flex-direction: column; /* Empilhar de cima para baixo */
+    justify-content: center; /* Centralizar verticalmente */
+    align-items: center;     /* Centralizar horizontalmente */
+    
+    position: relative; /* Para colocar decorações */
+    overflow: hidden;   /* Esconder partes que saem da tela */
 }
 
-.contact .heading {
-  display: flex;
-  align-items: center;
-  gap: 1rem; /* Define o espaçamento entre o ícone e o texto */
+/* Animação de entrada suave */
+.contact:not(.loaded) {
+    opacity: 0; /* Invisível no início */
 }
 
-/* Ajustar o título */
-.contact h2.heading {
-  font-size: 3.5rem;
-  margin-bottom: 2rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #000000;
+.contact.loaded {
+    opacity: 1; /* Fica visível */
+    transition: opacity 1s ease; /* Transição suave */
 }
 
-/* Ajustar o contêiner para centralizar o conteúdo */
-.contact .container {
-  max-width: 700px;
-  width: 100%;
-  background: #fff;
-  border-radius: 1.5rem;
-  margin: 2rem;
-  box-shadow: 0 5px 10px rgb(77, 55, 125);
-  display: flex;
-  justify-content: center;
-  align-items: center; /* Alinha verticalmente o conteúdo */
-  padding: 2.5rem 2rem;
-  flex-direction: column; /* Empilha o conteúdo (imagem e formulário) */
+/* ==========================================
+   TÍTULO DA SEÇÃO
+   (Como um letreiro bonito)
+   ========================================== */
+
+.contact-title {
+    text-align: center;  /* Centralizar texto */
+    margin-bottom: 3rem; /* Espaço embaixo */
+    position: relative;  /* Para animações */
+    z-index: 2;         /* Ficar na frente */
 }
 
-/* Ajuste no layout do conteúdo (imagem e formulário) */
-.contact .container .content {
-  display: flex;
-  flex-direction: column; /* Empilha o conteúdo (imagem e formulário) */
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  gap: 2rem; /* Espaço entre a imagem e o formulário */
+.contact-title h2 {
+    /* Tamanho que muda conforme a tela */
+    font-size: clamp(2rem, 5vw, 4rem); 
+    color: rgba(255, 255, 255, 0.87);        /* Cor branca */
+    margin-bottom: 1rem; /* Espaço embaixo */
+    
+    /* Alinhar ícone e texto */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem; /* Espaço entre ícone e texto */
+    
+    /* Efeito de sombra no texto */
+    text-shadow: 0 4px 8px rgba(255, 255, 255, 0.815);
+    
+    /* Animação de entrada */
+    animation: slideInDown 1s ease-out;
 }
 
-.contact .content .image-box img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Garante que a imagem não distorça */
+.contact-title p {
+    font-size: 1.2rem;   /* Tamanho médio */
+    color: rgba(255, 255, 255, 0.39); /* Branco quase transparente */
+    max-width: 600px;    /* Largura máxima */
+    margin: 0 auto;      /* Centralizar */
+    
+    /* Animação com atraso */
+    animation: fadeIn 1s ease-out 0.3s both;
 }
 
-.contact .content form {
-  width: 80%;
-  margin-top: 2rem; /* Espaço entre imagem e formulário */
+/* ==========================================
+   ANIMAÇÕES BONITAS
+   (Como desenhos que se movem)
+   ========================================== */
+
+/* Ícone que pula */
+.bounce {
+    animation: bounce 3s infinite;
 }
 
-/* Ajustes gerais para o formulário */
-form .form-group {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0); /* Posição normal */
+    }
+    40% {
+        transform: translateY(-10px); /* Pula para cima */
+    }
+    60% {
+        transform: translateY(-5px); /* Pula menos */
+    }
 }
 
-.form-group .field {
-  height: 50px;
-  display: flex;
-  position: relative;
-  margin: 1rem;
-  width: 100%;
+/* Ícones que pulsam (como coração batendo) */
+.pulse {
+    animation: pulse 1s infinite;
 }
 
-form i {
-  position: absolute;
-  top: 50%;
-  left: 18px;
-  color: rgb(51, 51, 51);
-  font-size: 17px;
-  pointer-events: none;
-  transform: translateY(-50%);
+@keyframes pulse {
+    0% {
+        transform: scale(1); /* Tamanho normal */
+    }
+    50% {
+        transform: scale(1.1); /* Cresce um pouco */
+    }
+    100% {
+        transform: scale(1); /* Volta ao normal */
+    }
 }
 
-form .field input,
-form .message textarea {
-  width: 100%;
-  height: 100%;
-  outline: none;
-  padding: 0 16px 0 48px;
-  font-size: 16px;
-  font-family: 'Poppins', sans-serif;
-  border-radius: 5px;
-  border: 1px solid rgb(51, 51, 51);
-  background: #e5ecfb;
+/* Entrada de cima para baixo */
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px); /* Começa lá em cima */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* Desce para posição */
+    }
 }
 
-.field input::placeholder,
-.message textarea::placeholder {
-  color: rgb(51, 51, 51);
+/* Entrada de baixo para cima */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px); /* Começa lá embaixo */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* Sobe para posição */
+    }
 }
 
-.field input:focus,
-.message textarea:focus {
-  padding-left: 47px;
-  border: 2px solid rgb(115, 3, 167);
+/* Aparecer gradualmente */
+@keyframes fadeIn {
+    from { opacity: 0; } /* Invisível */
+    to { opacity: 1; }   /* Visível */
 }
 
-.field input:focus ~ i,
-.message textarea:focus ~ i {
-  color: rgb(115, 3, 167);
+/* ==========================================
+   CONTAINER PRINCIPAL
+   (Como uma mesa para organizar as coisas)
+   ========================================== */
+
+.contact-container {
+    max-width: 1200px; /* Largura máxima */
+    width: 100%;       /* Usar toda largura disponível */
+    
+    /* Grade com 2 colunas (como uma mesa com 2 gavetas) */
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Duas partes iguais */
+    gap: 3rem; /* Espaço entre as colunas */
+    
+    position: relative; /* Para animações */
+    z-index: 2;        /* Ficar na frente */
+    
+    /* Animação de entrada */
+    animation: slideInUp 1s ease-out 0.6s both;
 }
 
-form .message {
-  position: relative;
-  margin: 1rem;
-  width: 100%;
+/* ==========================================
+   CAIXAS DE INFORMAÇÃO
+   (Como cartas bonitas com informações)
+   ========================================== */
+
+.contact-info,
+.map-container {
+    /* Fundo branco meio transparente (como vidro) */
+    background: rgb(255, 255, 255);
+    backdrop-filter: blur(10px); /* Efeito de vidro embaçado */
+    
+    border-radius: 20px; /* Cantos arredondados */
+    padding: 2.5rem;     /* Espaço interno */
+    
+    /* Sombra bonita */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0);
+    
+    /* Transição suave para hover */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-form .message i {
-  top: 25px;
-  font-size: 20px;
-  left: 15px;
+/* Efeito quando passar o mouse */
+.contact-info:hover,
+.map-container:hover {
+    transform: translateY(-5px); /* Levanta um pouco */
+    box-shadow: 0 30px 60px rgba(252, 252, 255, 0.137); /* Sombra maior */
 }
 
-form .message textarea {
-  min-height: 130px;
-  max-height: 230px;
-  max-width: 100%;
-  min-width: 100%;
-  padding: 12px 20px 0 48px;
+/* Títulos das seções */
+.contact-info h3,
+.map-container h3 {
+    font-size: 2rem;    /* Tamanho grande */
+    color: #4b4b4b;        /* Cor  */
+    margin-bottom: 2rem; /* Espaço embaixo */
+    
+    /* Alinhar ícone e texto */
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* Espaço pequeno */
 }
 
-form .message textarea::-webkit-scrollbar {
-  width: 0px;
+/* ==========================================
+   ITENS DE INFORMAÇÃO
+   (Como cartões com dados importantes)
+   ========================================== */
+
+.info-item {
+    display: flex;       /* Alinhar horizontalmente */
+    align-items: center; /* Centralizar verticalmente */
+    margin-bottom: 1.5rem; /* Espaço embaixo */
+    padding: 1rem;       /* Espaço interno */
+    
+    /* Fundo colorido suave */
+    background: rgba(99, 111, 167, 0.1);
+    border-radius: 12px; /* Cantos arredondados */
+    
+    /* Transições suaves */
+    transition: all 0.3s ease;
+    cursor: pointer; /* Mostrar que é clicável */
+    
+    /* Borda invisível que aparece no hover */
+    border: 2px solid transparent;
 }
 
-form .button-area {
-  display: flex;
-  float: right;
-  flex-direction: row-reverse;
+/* Efeito quando passar o mouse */
+.info-item:hover {
+    background: rgba(102, 126, 234, 0.2); /* Cor mais forte */
+    transform: translateX(10px); /* Move para direita */
+    border-color: rgba(102, 126, 234, 0.3); /* Borda colorida */
 }
 
-.button-area button {
-  color: #fff;
-  border: none;
-  outline: none;
-  font-size: 1.8rem;
-  cursor: pointer;
-  border-radius: 5px;
-  padding: 13px 25px;
-  background: #2506ad;
-  box-shadow: 0px 5px 10px rgba(48, 68, 247, .6);
-  transition: 0.3s ease;
-  font-family: 'Nunito', sans-serif;
+/* Ícones dos itens */
+.info-item i:first-child {
+    font-size: 1.5rem;  /* Tamanho médio */
+    color: #1b1b1b;     /* Cor azul */
+    margin-right: 1rem; /* Espaço à direita */
+    width: 30px;        /* Largura fixa */
+    text-align: center; /* Centralizar */
 }
 
-.button-area button:hover {
-  background: #00ff00f5;
+/* Conteúdo do item */
+.info-item div {
+    flex: 1; /* Ocupar espaço restante */
 }
 
-.button-area span {
-  font-size: 17px;
-  padding: 1rem;
-  display: none;
+/* Rótulo (título) */
+.info-item .label {
+    font-weight: bold; /* Texto em negrito */
+    color: #000000;       /* Cor escura */
+    margin-bottom: 0.2rem; /* Espaço pequeno embaixo */
 }
 
-.button-area button i {
-  position: relative;
-  top: 6px;
-  left: 2px;
-  font-size: 1.5rem;
-  transition: 0.3s;
-  color: #fff;
+/* Valor (informação) */
+.info-item .value {
+    color: #636c6d;       /* Cor */
+    font-size: 1.2rem; /* Tamanho um pouco menor */
 }
 
-.button-area button:hover i {
-  left: 8px;
+/* Ícone de copiar */
+.copy-icon {
+    opacity: 0;        /* Invisível inicialmente */
+    transition: opacity 0.3s ease; /* Transição suave */
 }
 
-/* Media Queries */
-@media (max-width: 900px) {
-  .contact {
-    min-height: 70vh;
-  }
-
-  .contact .container {
-    margin: 3rem 0 2rem 0;
-  }
-
-  .contact .container .content {
-    padding: 18px 12px;
-    flex-direction: column; /* Empilha os itens na versão mobile */
-    align-items: center;  /* Centraliza verticalmente */
-  }
-
-  .contact .content .image-box {
-    display: none;
-  }
-
-  .contact .content form {
-    width: 100%;
-    margin-right: 0;
-  }
+.info-item:hover .copy-icon {
+    opacity: 1; /* Aparece no hover */
 }
-/* Final contato */
+
+/* ==========================================
+   MAPA
+   (Como uma janela para o mundo)
+   ========================================== */
+
+.map-wrapper {
+    position: relative; /* Para efeitos */
+    width: 100%;       /* Largura total */
+    height: 300px;     /* Altura fixa */
+    border-radius: 12px; /* Cantos arredondados */
+    overflow: hidden;   /* Esconder bordas */
+    
+    /* Sombra interna */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.map-wrapper iframe {
+    width: 100%;  /* Largura total */
+    height: 100%; /* Altura total */
+    border: none; /* Sem borda */
+    
+    /* Filtro inicial */
+    filter: grayscale(20%);
+    transition: filter 0.3s ease; /* Transição suave */
+}
+
+/* Efeito no hover do mapa */
+.map-wrapper:hover iframe {
+    filter: grayscale(0%); /* Remove filtro cinza */
+}
+
+/* Informações do mapa */
+.map-info {
+    margin-top: 1.5rem; /* Espaço em cima */
+    padding-top: 1.5rem; /* Espaço interno em cima */
+    border-top: 1px solid rgba(0, 0, 0, 0.1); /* Linha separadora */
+}
+
+.map-info p {
+    margin-bottom: 1rem; /* Espaço embaixo */
+    color: #8a8a8a;         /* Cor cinza */
+}
+
+/* ==========================================
+   BOTÕES
+   (Como botões mágicos que fazem coisas)
+   ========================================== */
+
+.action-buttons {
+    margin-top: 2rem; /* Espaço em cima */
+    display: flex;    /* Alinhar horizontalmente */
+    gap: 1rem;        /* Espaço entre botões */
+    flex-wrap: wrap;  /* Quebrar linha se necessário */
+}
+
+.btn {
+    padding: 1rem 2rem;  /* Espaço interno */
+    border: none;        /* Sem borda padrão */
+    border-radius: 50px; /* Cantos bem arredondados */
+    font-size: 1rem;     /* Tamanho da fonte */
+    font-weight: bold;   /* Texto em negrito */
+    cursor: pointer;     /* Mostrar que é clicável */
+    
+    /* Transições suaves */
+    transition: all 0.3s ease;
+    text-decoration: none; /* Sem sublinhado */
+    
+    /* Alinhar ícone e texto */
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem; /* Espaço pequeno */
+}
+
+/* Botão principal (mais importante) */
+.btn-primary {
+    background: linear-gradient(45deg, #667eea, #764ba2); /* Gradiente */
+    color: white; /* Texto branco */
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px); /* Levanta */
+    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4); /* Sombra colorida */
+}
+
+/* Botão secundário */
+.btn-whats {
+    background: linear-gradient(45deg, #22c52f); /* Gradiente */
+    color: #ffffff;         /* Texto colorido */
+}
+
+.btn-whats:hover {
+    transform: translateY(-3px); /* Levanta */
+    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4); /* Sombra colorida */
+}
+
+/* Botão com contorno */
+.btn-outline {
+    background: transparent;
+    color: #333;
+    border: 2px solid #ddd;
+}
+
+.btn-outline:hover {
+    background: #333;
+    color: white;
+}
+
+/* ==========================================
+   FORMAS FLUTUANTES DECORATIVAS
+   (Como confetes voando no fundo)
+   ========================================== */
+
+.floating-shapes {
+    position: absolute; /* Posição absoluta */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none; /* Não atrapalhar cliques */
+    z-index: 1; /* Ficar atrás do conteúdo */
+}
+
+.shape {
+    position: absolute; /* Posição absoluta */
+    border-radius: 50%; /* Formato redondo */
+    opacity: 0.1;       /* Quase transparente */
+}
+
+/* Forma 1 - Azul */
+.shape-1 {
+    width: 100px;
+    height: 100px;
+    background: #667eea;
+    top: 10%;
+    left: 10%;
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Forma 2 - Rosa */
+.shape-2 {
+    width: 150px;
+    height: 150px;
+    background: #f093fb;
+    top: 70%;
+    right: 10%;
+    animation: float 8s ease-in-out infinite reverse;
+}
+
+/* Forma 3 - Roxo */
+.shape-3 {
+    width: 80px;
+    height: 80px;
+    background: #764ba2;
+    top: 30%;
+    right: 30%;
+    animation: float 10s ease-in-out infinite;
+}
+
+/* Forma 4 - Verde */
+.shape-4 {
+    width: 120px;
+    height: 120px;
+    background: #4ecdc4;
+    bottom: 20%;
+    left: 20%;
+    animation: float 7s ease-in-out infinite reverse;
+}
+
+/* Animação de flutuação */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-20px) rotate(10deg);
+    }
+}
+
+/* ==========================================
+   RESPONSIVIDADE
+   (Para ficar bonito em qualquer tela)
+   ========================================== */
+
+/* Tablets grandes (até 1024px) */
+@media (max-width: 1024px) {
+    .contact-container {
+        max-width: 900px;
+        gap: 2rem;
+    }
+    
+    .contact-title h2 {
+        font-size: clamp(2rem, 4vw, 3rem);
+    }
+}
+
+/* Tablets pequenos (até 768px) */
+@media (max-width: 768px) {
+    .contact {
+        padding: 2rem 1rem; /* Menos espaço interno */
+    }
+    
+    .contact-container {
+        grid-template-columns: 1fr; /* Uma coluna só */
+        gap: 2rem;
+    }
+    
+    .contact-info,
+    .map-container {
+        padding: 2rem; /* Menos espaço interno */
+    }
+    
+    .action-buttons {
+        justify-content: center; /* Centralizar botões */
+    }
+    
+    .btn {
+        flex: 1; /* Botões ocupam espaço igual */
+        min-width: 150px; /* Largura mínima */
+    }
+}
+
+/* Celulares (até 480px) */
+@media (max-width: 480px) {
+    .contact {
+        padding: 1.5rem 1rem;
+    }
+    
+    .contact-title {
+        margin-bottom: 2rem;
+    }
+    
+    .contact-title h2 {
+        font-size: clamp(1.5rem, 6vw, 2.5rem);
+        flex-direction: column; /* Ícone em cima, texto embaixo */
+        gap: 0.5rem;
+    }
+    
+    .contact-info,
+    .map-container {
+        padding: 1.5rem;
+    }
+    
+    .info-item {
+        padding: 0.8rem;
+        margin-bottom: 1rem;
+    }
+    
+    .info-item:hover {
+        transform: translateX(5px); /* Movimento menor */
+    }
+    
+    .map-wrapper {
+        height: 250px; /* Mapa menor */
+    }
+    
+    .action-buttons {
+        flex-direction: column; /* Botões em coluna */
+    }
+    
+    .btn {
+        width: 100%; /* Botões ocupam largura total */
+        justify-content: center; /* Centralizar conteúdo */
+    }
+    
+    /* Formas menores em telas pequenas */
+    .shape-1, .shape-2, .shape-3, .shape-4 {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+/* Celulares muito pequenos (até 320px) */
+@media (max-width: 320px) {
+    .contact-title h2 {
+        font-size: 1.8rem;
+    }
+    
+    .contact-info h3,
+    .map-container h3 {
+        font-size: 1.5rem;
+    }
+    
+    .info-item i:first-child {
+        font-size: 1.2rem;
+        width: 25px;
+    }
+}
+
+
+/* ==========================================
+   ACESSIBILIDADE
+   (Para todos poderem usar)
+   ========================================== */
+
+/* Para pessoas que preferem menos movimento */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Melhor contraste para leitores de tela */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Foco visível para navegação por teclado */
+.btn:focus,
+.info-item:focus {
+    outline: 3px solid #667eea;
+    outline-offset: 2px;
+}
