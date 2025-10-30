@@ -162,7 +162,7 @@ export class HomeContentComponent implements AfterViewInit {
    */
   openWhatsApp(): void {
     const message = encodeURIComponent('Olá! Vim pelo site.');
-    window.open(`https://wa.me/5511?text=${message}`, '_blank');
+    window.open(`https://wa.me/5511930301084?text=${message}`, '_blank');
   }
 
   /**
