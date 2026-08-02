@@ -1,4 +1,3 @@
-declare var particlesJS: any;
 import { Component } from '@angular/core';
 import { HeaderComponent } from '../homePages/header/header.component';
 import { RouterModule } from '@angular/router';

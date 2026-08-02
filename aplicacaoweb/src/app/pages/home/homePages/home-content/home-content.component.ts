@@ -1,6 +1,19 @@
-import { Component, AfterViewInit, OnInit } from '@angular/core';
+import {
+  Component,
+  Inject,
+  OnDestroy,
+  OnInit,
+  PLATFORM_ID,
+} from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
-declare var particlesJS: any;
+/** Banner exibido no carrossel da home. */
+interface Banner {
+  image: string;
+  alt: string;
+  /** Link de destino do banner. Deixe vazio ('') para o banner não ser clicável. */
+  link: string;
+}
 
 @Component({
   selector: 'app-home-content',
@@ -9,83 +22,102 @@ declare var particlesJS: any;
   templateUrl: './home-content.component.html',
   styleUrls: ['./home-content.component.scss'],
 })
-export class HomeContentComponent implements AfterViewInit {
-  ngAfterViewInit(): void {
-    // Initialize particlesJS after view initialization
-    particlesJS('particles-js', {
-      particles: {
-        number: { value: 60, density: { enable: true, value_area: 800 } },
-        color: { value: '#363b61' },
-        shape: {
-          type: 'circle',
-          stroke: { width: 0, color: '#363b61' },
-          polygon: { nb_sides: 5 },
-          image: { src: 'img/github.svg', width: 100, height: 100 },
-        },
-        opacity: {
-          value: 0.5,
-          random: false,
-          anim: { enable: false, speed: 1, opacity_min: 0.1, sync: false },
-        },
-        size: {
-          value: 3,
-          random: true,
-          anim: { enable: false, speed: 40, size_min: 0.1, sync: false },
-        },
-        line_linked: {
-          enable: true,
-          distance: 150,
-          color: '#000000',
-          opacity: 0.3367165327817598,
-          width: 1,
-        },
-        move: {
-          enable: true,
-          speed: 4,
-          direction: 'none',
-          random: false,
-          straight: false,
-          out_mode: 'out',
-          bounce: false,
-          attract: { enable: false, rotateX: 600, rotateY: 1200 },
-        },
-      },
-      interactivity: {
-        detect_on: 'canvas',
-        events: {
-          onhover: { enable: true, mode: 'repulse' },
-          onclick: { enable: true, mode: 'push' },
-          resize: true,
-        },
-        modes: {
-          grab: { distance: 400, line_linked: { opacity: 1 } },
-          bubble: {
-            distance: 400,
-            size: 40,
-            duration: 2,
-            opacity: 8,
-            speed: 3,
-          },
-          repulse: { distance: 200, duration: 0.4 },
-          push: { particles_nb: 4 },
-          remove: { particles_nb: 2 },
-        },
-      },
-      retina_detect: true,
-    });
-  }
+export class HomeContentComponent implements OnInit, OnDestroy {
+  /**
+   * Banners do carrossel da home.
+   * Para tornar um banner clicável, basta preencher o campo `link`
+   * (ex.: link: 'https://volit.com.br/capacitacao/sql-basico').
+   */
+  banners: Banner[] = [
+    {
+      image: 'banners/banner-sql-basico.png',
+      alt: 'Capacitação SQL Básico - Dê o primeiro passo rumo a uma carreira de sucesso em TI',
+      link: '',
+    },
+    {
+      image: 'banners/banner-ia.png',
+      alt: 'A IA já faz parte da sua vida - Vibe Code Engineering',
+      link: '',
+    },
+    {
+      image: 'banners/banner-analise-dados.png',
+      alt: 'Capacitação em Análise de Dados - Transforme dados em decisões',
+      link: '',
+    },
+  ];
 
-  constructor() {}
+  currentSlide = 0;
+
+  private readonly autoplayInterval = 6000;
+  private autoplayTimer: ReturnType<typeof setInterval> | null = null;
+
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
   ngOnInit(): void {
     // Animação quando o componente carrega
     this.addLoadedClass();
+    this.startAutoplay();
+  }
+
+  ngOnDestroy(): void {
+    this.pauseAutoplay();
+  }
+
+  /* ============================
+     CARROSSEL DE BANNERS
+     ============================ */
+
+  nextSlide(): void {
+    this.currentSlide = (this.currentSlide + 1) % this.banners.length;
+    this.restartAutoplay();
+  }
+
+  prevSlide(): void {
+    this.currentSlide =
+      (this.currentSlide - 1 + this.banners.length) % this.banners.length;
+    this.restartAutoplay();
+  }
+
+  goToSlide(index: number): void {
+    this.currentSlide = index;
+    this.restartAutoplay();
+  }
+
+  /** Inicia o autoplay (somente no browser, nunca durante o SSR/prerender). */
+  startAutoplay(): void {
+    if (!isPlatformBrowser(this.platformId) || this.banners.length <= 1) {
+      return;
+    }
+
+    this.pauseAutoplay();
+    this.autoplayTimer = setInterval(() => {
+      this.currentSlide = (this.currentSlide + 1) % this.banners.length;
+    }, this.autoplayInterval);
+  }
+
+  /** Pausa o autoplay (usado no hover e ao destruir o componente). */
+  pauseAutoplay(): void {
+    if (this.autoplayTimer !== null) {
+      clearInterval(this.autoplayTimer);
+      this.autoplayTimer = null;
+    }
+  }
+
+  /** Reinicia a contagem do autoplay após uma navegação manual. */
+  private restartAutoplay(): void {
+    if (this.autoplayTimer !== null) {
+      this.startAutoplay();
+    }
   }
 
   /**
    * Adiciona a classe 'loaded' para animação de entrada
    */
   private addLoadedClass(): void {
+    if (!isPlatformBrowser(this.platformId)) {
+      return;
+    }
+
     setTimeout(() => {
       const contactElement = document.querySelector('.contact');
       if (contactElement) {

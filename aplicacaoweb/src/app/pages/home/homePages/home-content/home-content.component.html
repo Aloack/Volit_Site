@@ -1,14 +1,58 @@
-<div id="banana"></div>
-<div id="particles-js"></div>
-
-<!-- hero section starts -->
+<!-- hero section (carrossel de banners) starts -->
 <section class="home" id="home">
-  <a class="logo"> <img src="Logo completa.png" /></a>
-  <div class="content">
-    <a><img src="Elos_VOLIT.png" alt="Elos-VOLIT2" /></a>
+  <div
+    class="carousel"
+    (mouseenter)="pauseAutoplay()"
+    (mouseleave)="startAutoplay()"
+  >
+    <div
+      class="carousel-track"
+      [style.transform]="'translateX(-' + currentSlide * 100 + '%)'"
+    >
+      @for (banner of banners; track banner.image) {
+      <a
+        class="carousel-slide"
+        [class.has-link]="!!banner.link"
+        [attr.href]="banner.link || null"
+        [attr.target]="banner.link ? '_blank' : null"
+        [attr.rel]="banner.link ? 'noopener' : null"
+      >
+        <img [src]="banner.image" [alt]="banner.alt" draggable="false" />
+      </a>
+      }
+    </div>
+
+    <button
+      type="button"
+      class="carousel-arrow prev"
+      (click)="prevSlide()"
+      aria-label="Banner anterior"
+    >
+      <i class="fas fa-chevron-left"></i>
+    </button>
+    <button
+      type="button"
+      class="carousel-arrow next"
+      (click)="nextSlide()"
+      aria-label="Próximo banner"
+    >
+      <i class="fas fa-chevron-right"></i>
+    </button>
+
+    <div class="carousel-dots">
+      @for (banner of banners; track banner.image; let i = $index) {
+      <button
+        type="button"
+        class="dot"
+        [class.active]="i === currentSlide"
+        (click)="goToSlide(i)"
+        [attr.aria-label]="'Ir para o banner ' + (i + 1)"
+      ></button>
+      }
+    </div>
   </div>
 </section>
-<!-- hero section ends -->
+<!-- hero section (carrossel de banners) ends -->
 
 <!-- about section starts -->
 <section class="about" id="sobre">

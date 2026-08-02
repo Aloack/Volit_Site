@@ -1,94 +1,155 @@
-    #particles-js {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    z-index: -1; 
-  }
-
-/* hero section starts */
+/* hero section (carrossel de banners) starts */
 .home {
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem; /* Diminuído o gap */
-  min-height: 75vh;
   width: 100%;
+  /* compensa o header fixo (height: 6.5rem) para não cobrir o topo do banner */
+  padding-top: 6.5rem;
 }
 
-.home .content {
-  flex: 1 1 30rem; /* Diminuído a largura mínima */
-  padding-top: 5rem; /* Menos espaço acima */
-  z-index: 1;
-  text-align: center;
+.carousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: #02061a;
 }
 
-/* Ajuste do tamanho e posicionamento da logo */
-.home .logo img {
+.carousel-track {
+  display: flex;
+  width: 100%;
+  transition: transform 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+  will-change: transform;
+}
+
+.carousel-slide {
+  flex: 0 0 100%;
+  width: 100%;
+  display: block;
+  line-height: 0;
+  cursor: default;
+}
+
+/* Só vira "clicável" quando o banner tiver um link preenchido */
+.carousel-slide.has-link {
+  cursor: pointer;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: auto;
+  display: block;
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+/* setas de navegação */
+.carousel-arrow {
   position: absolute;
-  top: 26%;
-  left: 28%;
-  width: 315px;
-  height: auto;
-  z-index: 2;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 5rem;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  background: rgba(2, 6, 26, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #fff;
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 3;
+  opacity: 0;
+  transition: opacity 0.3s ease, background 0.3s ease;
 }
 
-/* Ajuste da imagem dos elos */
-.home .content img {
-  max-width: 100%;
-  height: auto;
+.carousel:hover .carousel-arrow {
+  opacity: 1;
+}
+
+.carousel-arrow:hover,
+.carousel-arrow:focus-visible {
+  background: #0a58ff;
+  opacity: 1;
+}
+
+.carousel-arrow.prev {
+  left: 2rem;
+}
+
+.carousel-arrow.next {
+  right: 2rem;
+}
+
+/* indicadores (bolinhas) */
+.carousel-dots {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 1rem;
+  z-index: 3;
+}
+
+.carousel-dots .dot {
+  width: 1.2rem;
+  height: 1.2rem;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.45);
+  cursor: pointer;
+  transition: background 0.3s ease, width 0.3s ease;
+}
+
+.carousel-dots .dot.active {
+  width: 3rem;
+  border-radius: 1rem;
+  background: #0a58ff;
 }
 
 /* hero media queries */
-@media (max-width: 1024px) {
-  .home .logo img {
-    width: 260px;
-    top: 26%;
-    left: 25%;
-  }
-}
-
 @media (max-width: 768px) {
-  .home .logo img {
-    width: 220px;
-    top: 20%;
-    left: 20%;
+  .carousel-arrow {
+    width: 4rem;
+    height: 4rem;
+    font-size: 1.6rem;
+    opacity: 1; /* sem hover no touch, deixa sempre visível */
   }
-}
 
-@media (max-width: 600px) {
-  .home .logo img {
-    width: 180px;
-    top: 15%;
-    left: 50%;
-    transform: translateX(-50%); /* Centraliza horizontalmente no mobile */
+  .carousel-arrow.prev {
+    left: 1rem;
+  }
+
+  .carousel-arrow.next {
+    right: 1rem;
   }
 }
 
 @media (max-width: 450px) {
-  .home .logo img {
-    width: 160px;
-    top: 12%;
-    left: 50%;
-    transform: translateX(-50%); /* Mantém centralizada */
+  .carousel-arrow {
+    display: none; /* em telas pequenas as bolinhas já bastam */
   }
 
-  .home .btn {
-    margin: 4rem 0;
+  .carousel-dots {
+    bottom: 0.8rem;
   }
 
-  .socials {
-    margin-top: 12rem;
+  .carousel-dots .dot {
+    width: 0.9rem;
+    height: 0.9rem;
   }
 
-  .home .content p {
-    font-size: 2.2rem;
+  .carousel-dots .dot.active {
+    width: 2.2rem;
   }
+}
 
-  .home .content p span {
-    font-size: 2.2rem;
+/* respeita quem prefere menos animação */
+@media (prefers-reduced-motion: reduce) {
+  .carousel-track {
+    transition: none;
   }
 }
 /* hero section end */
