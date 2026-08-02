@@ -129,163 +129,67 @@
 
 <!-- work project section starts -->
 <section class="work" id="servicos">
-  <h2 class="heading"><i class="fas fa-user-cog"></i> Serviços</h2>
+  <!-- malha de circuito + brilho de fundo (decorativo) -->
+  <div class="work-bg" aria-hidden="true"></div>
 
-  <div class="box-container">
-    <div class="box tilt">
-      <img
-        draggable="false"
-        src="https://img.icons8.com/ios-filled/250/FFFFFF/data-configuration.png"
-        alt="img banco"
-      />
-      <div class="content">
-        <div class="tag">
-          <h3>Banco de dados</h3>
+  <div class="work-head">
+    <span class="eyebrow">// o que a Volit faz</span>
+    <h2 class="heading"><i class="fas fa-user-cog"></i> Serviços</h2>
+    <p class="work-sub">
+      Tecnologia e gestão aplicadas ao seu negócio — da base de dados à
+      capacitação do time.
+    </p>
+  </div>
+
+  <div class="svc-grid">
+    @for (svc of services; track svc.id) {
+    <article class="svc-card" [class.featured]="svc.featured">
+      <div class="svc-body">
+        <div class="svc-top">
+          <span class="svc-index">{{ svc.index }}</span>
+          <span class="svc-icon"><i class="fas {{ svc.icon }}"></i></span>
         </div>
-        <div class="desc">
-          <p>
-            <b>Potencialize sua gestão de dados conosco!</b> <br />
-            <br />
-            Oferecemos administração detalhada, garantindo estabilidade e
-            segurança, além de designs personalizados e migrações seguras.
-            Investimos em performance tuning para proporcionar uma experiência
-            de usuário ágil e eficiente. Transforme seus dados em valor e
-            otimize seus processos conosco!
-          </p>
+
+        <h3 class="svc-title">{{ svc.title }}</h3>
+        <p class="svc-hook">{{ svc.hook }}</p>
+
+        <ul class="svc-chips">
+          @for (chip of svc.chips; track chip) {
+          <li>{{ chip }}</li>
+          }
+        </ul>
+
+        <div
+          class="svc-detail"
+          [class.open]="expandedService === svc.id"
+          [id]="'svc-detail-' + svc.id"
+        >
+          <p>{{ svc.description }}</p>
+        </div>
+
+        <div class="svc-actions">
+          <button
+            type="button"
+            class="svc-more"
+            (click)="toggleService(svc.id)"
+            [attr.aria-expanded]="expandedService === svc.id"
+            [attr.aria-controls]="'svc-detail-' + svc.id"
+          >
+            {{ expandedService === svc.id ? "Ver menos" : "Ver detalhes" }}
+            <i class="fas fa-chevron-down"></i>
+          </button>
+
+          <button type="button" class="svc-cta" (click)="scrollToContact()">
+            Falar com a Volit <i class="fas fa-arrow-right"></i>
+          </button>
         </div>
       </div>
-    </div>
-
-    <div class="box tilt">
-      <img
-        draggable="false"
-        src="https://img.icons8.com/pastel-glyph/250/FFFFFF/conclusion-contract.png"
-        alt=""
-      />
-      <div class="content">
-        <div class="tag">
-          <h3>Mediação de Conflitos</h3>
-        </div>
-        <div class="desc">
-          <p>
-            <b
-              >Transforme a gestão de conflitos com nossa Plataforma de Mediação
-              Jurídica!</b
-            >
-            <br />
-            <br />
-            Oferecemos soluções avançadas de mediação, conciliação e arbitragem,
-            com vídeo assistência para comunicação direta e eficiente, além de
-            gerenciamento detalhado de conflitos. Nossa plataforma é flexível,
-            adaptando-se a qualquer tipo de disputa, garantindo agilidade,
-            segurança e confidencialidade. Soluções rápidas e eficazes, com a
-            conveniência de uma plataforma online que facilita a resolução de
-            disputas de forma simples e segura. Entre em contato e descubra como
-            podemos ajudar sua empresa a resolver conflitos com eficiência!
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="box tilt">
-      <img
-        draggable="false"
-        src="https://img.icons8.com/ios/200/FFFFFF/wifi--v1.png"
-        alt=""
-      />
-      <div class="content">
-        <div class="tag">
-          <h3>RFID</h3>
-        </div>
-        <div class="desc">
-          <p>
-            <b>RFID e IoT: Precisão e controle para o seu negócio!!!</b> <br />
-            <br />
-            A tecnologia RFID sustenta parte da Indústria 4.0 por meio de
-            aplicações em IoT. Processos baseados nessa tecnologia garantem um
-            alto nível de precisão, rastreabilidade e controle sobre os produtos
-            aos quais estão associados. Ela é muito útil em mercados como varejo
-            (retail), hospitalar, industrial, transporte e meios de cobrança
-            (pedágios). A Volit possui experiência no tratamento desses
-            processos em todos os mercados citados.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="box tilt">
-      <img
-        draggable="false"
-        src="https://img.icons8.com/ios/200/FFFFFF/my-computer.png"
-        alt=""
-      />
-      <div class="content">
-        <div class="tag">
-          <h3>Desenvolvimento de Software</h3>
-        </div>
-        <div class="desc">
-          <p>
-            <b>Transforme sua experiência digital conosco!</b> <br />
-            <br />
-            Desenvolvemos aplicações mobile, websites, e-commerce, APIs e
-            soluções para controle de acesso veicular, otimização de inventário
-            e rastreamento de ativos. Oferecemos serviços especializados,
-            focados em melhorar a eficiência e a gestão do seu negócio.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="box tilt">
-      <img
-        draggable="false"
-        src="https://img.icons8.com/ios-filled/200/FFFFFF/service.png"
-        alt="professor"
-      />
-      <div class="content">
-        <div class="tag">
-          <h3>Assessoria de validação de sistemas</h3>
-        </div>
-        <div class="desc">
-          <p>
-            <b
-              >Prestamos serviços de assessoria para a validação de sistemas em
-              entidades como a ANVISA e o Banco Central.</b
-            >
-            <br />
-            <br />
-            Oferecemos assessoria especializada para garantir que seus sistemas
-            atendam aos padrões estabelecidos pelas entidades como anvisa e
-            banco central.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="box tilt">
-      <img
-        draggable="false"
-        src="https://img.icons8.com/ios/200/FFFFFF/teacher.png"
-        alt=""
-      />
-      <div class="content">
-        <div class="tag">
-          <h3>Capacitação</h3>
-        </div>
-        <div class="desc">
-          <p>
-            <b>Capacitação para fortalecer o seu time profissional.</b> <br />
-            <br />
-            Oferecemos capacitação profissional para aprimorar habilidades,
-            otimizar processos e preparar sua equipe para atender aos requisitos
-            tecnológicos da sua empresa.
-          </p>
-        </div>
-      </div>
-    </div>
+    </article>
+    }
   </div>
 </section>
 <!-- work project section ends -->
+
 
 <!-- SEÇÃO DE CONTATO COMEÇA AQUI -->
 <section class="contact" id="contato">

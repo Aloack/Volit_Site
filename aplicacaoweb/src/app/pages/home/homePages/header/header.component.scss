@@ -50,7 +50,7 @@ header {
 
 .navbar ul li a {
   font-size: 2rem;
-  color: #0E2431;
+  color: var(--volit-ink);
   font-weight: 600;
   text-decoration: none;
   letter-spacing: 0.04rem;
@@ -59,8 +59,8 @@ header {
 
 .navbar ul li a.active,
 .navbar ul li a:hover {
-  color: #01ccff;
-  border-bottom: .2rem solid #01ccff;
+  color: var(--volit-blue);
+  border-bottom: .2rem solid var(--volit-blue);
   padding: .5rem 0;
 }
 
@@ -74,7 +74,7 @@ header {
 
 #menu-icon i {
   font-size: 2rem;
-  color: #0E2431;
+  color: var(--volit-ink);
 }
 
 /* Dropdown menu styles */

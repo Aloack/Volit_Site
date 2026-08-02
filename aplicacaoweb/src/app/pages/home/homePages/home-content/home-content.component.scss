@@ -10,7 +10,7 @@
   position: relative;
   width: 100%;
   overflow: hidden;
-  background: #02061a;
+  background: var(--volit-bg-deep);
 }
 
 .carousel-track {
@@ -69,7 +69,7 @@
 
 .carousel-arrow:hover,
 .carousel-arrow:focus-visible {
-  background: #0a58ff;
+  background: var(--volit-blue);
   opacity: 1;
 }
 
@@ -106,7 +106,7 @@
 .carousel-dots .dot.active {
   width: 3rem;
   border-radius: 1rem;
-  background: #0a58ff;
+  background: var(--volit-blue);
 }
 
 /* hero media queries */
@@ -170,12 +170,12 @@
 }
 
 .about .row .content h3{
-  color: rgb(27, 27, 27);
+  color: var(--volit-ink);
   font-size: 3rem;
 }
 .about .row .content .tag{
   font-size: 2.5rem;
-  color: #020133;
+  color: var(--volit-blue);
   font-weight: 600;
   margin-top: 1rem;
 }
@@ -215,14 +215,14 @@
 
 .heading{
   font-size: 3.5rem;
-  color: rgb(10, 10, 10);
+  color: var(--volit-ink);
   font-weight: 800;
   text-align: center;
 }
 
 .skills {
   min-height: 25vh;
-  background: linear-gradient(to bottom, #bd91e4, #7352a5);
+  background: linear-gradient(to bottom, var(--volit-bg-light), var(--volit-bg-mid));
 }
 
 .skills h2 {
@@ -230,7 +230,7 @@
 }
 
 .skills .container {
-  background: rgba(43, 181, 199, 0.205);
+  background: rgba(10, 88, 255, 0.14);
   border-radius: 8rem;
   padding: 3rem;
   width: 83%;
@@ -249,13 +249,13 @@
   margin-bottom: 10px;
   padding: 10px;
   border-radius: 4rem;
-  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.582);
-  background: rgba(0, 0, 0, 0.9);
+  box-shadow: 0 4px 10px rgba(91, 157, 255, 0.35);
+  background: var(--volit-bg-deep);
   transition: 0.2s;
 }
 .skills .container .bar:hover {
-  box-shadow: 0 8px 10px rgba(15, 184, 196, 0.8) !important;
-  background-color: rgb(118, 192, 232) !important;
+  box-shadow: 0 8px 18px rgba(10, 88, 255, 0.85) !important;
+  background-color: var(--volit-bg-mid) !important;
 }
 
 .skills .container .bar .info img {
@@ -307,156 +307,488 @@
 
 
 /* work section starts */
+/* ==========================================
+   SERVIÇOS — "painel de engenharia"
+   Vocabulário visual puxado dos banners:
+   malha de circuito, numeração monoespaçada
+   e o azul elétrico como única cor de acento.
+   ========================================== */
+
 .work {
-  background: linear-gradient(to bottom, #7352a5, #00002c);
-  padding: 6rem 8rem;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: linear-gradient(to bottom, var(--volit-bg-mid), var(--volit-bg-deep));
+  padding: 8rem 8rem 9rem;
+}
+
+/* malha de circuito + halo azul, puramente decorativos */
+.work-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    /* halo azul saindo do topo, como o glow dos banners */
+    radial-gradient(
+      ellipse 90% 50% at 50% 0%,
+      rgba(10, 88, 255, 0.28),
+      transparent 70%
+    ),
+    /* hairlines verticais */
+    repeating-linear-gradient(
+      to right,
+      rgba(91, 157, 255, 0.07) 0 1px,
+      transparent 1px 90px
+    ),
+    /* hairlines horizontais */
+    repeating-linear-gradient(
+      to bottom,
+      rgba(91, 157, 255, 0.07) 0 1px,
+      transparent 1px 90px
+    );
+}
+
+/* ---------- cabeçalho da seção ---------- */
+
+.work-head {
+  position: relative;
+  text-align: center;
+  margin-bottom: 6rem;
+}
+
+.work-head .eyebrow {
+  display: inline-block;
+  font-family: "JetBrains Mono", ui-monospace, "Courier New", monospace;
+  font-size: 1.4rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--volit-blue-soft);
+  margin-bottom: 1.5rem;
 }
 
 .work h2 {
   display: block;
   text-align: center;
-  margin: 0 auto;
+  margin: 0 auto 1.5rem;
   color: #ffffff;
   font-size: 3.5rem;
-  padding: 20px;
   max-width: 90%;
+}
+
+.work-head .work-sub {
+  font-size: 1.8rem;
+  line-height: 1.6;
+  color: var(--volit-blue-pale);
+  max-width: 62rem;
+  margin: 0 auto;
+  font-family: "Nunito", sans-serif;
+}
+
+/* ---------- grade assimétrica ----------
+   6 colunas: o destaque ocupa a linha toda,
+   depois 3 cards (2 col) e 2 cards (3 col).   */
+
+.svc-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 2.5rem;
+  width: 90%;
+  max-width: 132rem;
+  margin: 0 auto;
+}
+
+.svc-card {
+  grid-column: span 2;
+  position: relative;
+  border: 1px solid rgba(91, 157, 255, 0.22);
+  background: linear-gradient(
+    160deg,
+    rgba(13, 37, 89, 0.72),
+    rgba(2, 6, 26, 0.85)
+  );
+  /* cantos chanfrados: leitura de instrumento, não de "card genérico" */
+  clip-path: polygon(
+    0 0,
+    calc(100% - 1.8rem) 0,
+    100% 1.8rem,
+    100% 100%,
+    1.8rem 100%,
+    0 calc(100% - 1.8rem)
+  );
+  transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1),
+    border-color 0.45s ease, box-shadow 0.45s ease;
+}
+
+/* os dois últimos ficam mais largos para fechar a grade sem buraco */
+.svc-card:nth-last-child(-n + 2) {
+  grid-column: span 3;
+}
+
+.svc-card.featured {
+  grid-column: span 6;
+  border-color: rgba(10, 88, 255, 0.55);
+  background: linear-gradient(
+    115deg,
+    rgba(10, 88, 255, 0.18),
+    rgba(13, 37, 89, 0.75) 45%,
+    rgba(2, 6, 26, 0.9)
+  );
+}
+
+/* fio de luz correndo na borda superior no hover */
+.svc-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--volit-blue),
+    var(--volit-blue-soft),
+    transparent
+  );
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.svc-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(10, 88, 255, 0.7);
+  box-shadow: 0 1.8rem 4rem rgba(2, 6, 26, 0.6),
+    0 0 0 1px rgba(10, 88, 255, 0.25), 0 0 3.5rem rgba(10, 88, 255, 0.35);
+}
+
+.svc-card:hover::before {
+  transform: scaleX(1);
+}
+
+.svc-body {
+  padding: 3rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.svc-card.featured .svc-body {
+  padding: 3.5rem 4rem;
+}
+
+/* ---------- topo do card: número + ícone ---------- */
+
+.svc-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2.5rem;
+}
+
+.svc-index {
+  font-family: "JetBrains Mono", ui-monospace, "Courier New", monospace;
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: rgba(91, 157, 255, 0.55);
+}
+
+.svc-icon {
+  display: grid;
+  place-items: center;
+  width: 5.6rem;
+  height: 5.6rem;
+  border: 1px solid rgba(91, 157, 255, 0.3);
+  background: rgba(10, 88, 255, 0.12);
+  color: var(--volit-blue-soft);
+  font-size: 2.4rem;
+  transition: background 0.45s ease, color 0.45s ease, border-color 0.45s ease;
+}
+
+.svc-card:hover .svc-icon {
+  background: var(--volit-blue);
+  border-color: var(--volit-blue);
+  color: #ffffff;
+}
+
+.svc-card.featured .svc-icon {
+  width: 6.4rem;
+  height: 6.4rem;
+  font-size: 2.8rem;
+  background: var(--volit-blue);
+  border-color: var(--volit-blue);
+  color: #ffffff;
+}
+
+/* ---------- textos ---------- */
+
+.svc-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 1rem;
+  line-height: 1.25;
+}
+
+.svc-card.featured .svc-title {
+  font-size: 3rem;
+}
+
+.svc-hook {
+  font-size: 1.6rem;
+  line-height: 1.6;
+  color: var(--volit-blue-pale);
+  font-family: "Nunito", sans-serif;
   margin-bottom: 2rem;
 }
 
-.work .box-container {
+.svc-card.featured .svc-hook {
+  font-size: 1.9rem;
+  max-width: 60rem;
+}
+
+/* ---------- etiquetas ---------- */
+
+.svc-chips {
+  list-style: none;
   display: flex;
   flex-wrap: wrap;
-  gap: 3rem;
-  margin: 0 auto;
-  width: 90%;
-  justify-content: space-between;
+  gap: 0.8rem;
+  margin: 0 0 2.5rem;
+  padding: 0;
 }
 
-.work .box-container .box {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 0.5rem;
-  box-shadow: 0 0.5rem 1rem rgba(241, 236, 236, 0.973);
-  overflow: hidden;
-  transition: transform 0.8s ease-in-out;
-  height: 45rem;
-  width: calc(33.333% - 2rem); /* Adjusted for better spacing */
-  max-width: 100%; /* Changed from 32% to allow full width on mobile */
+.svc-chips li {
+  font-family: "JetBrains Mono", ui-monospace, "Courier New", monospace;
+  font-size: 1.2rem;
+  letter-spacing: 0.05em;
+  padding: 0.5rem 1.1rem;
+  color: var(--volit-blue-soft);
+  border: 1px solid rgba(91, 157, 255, 0.25);
+  background: rgba(91, 157, 255, 0.07);
+  white-space: nowrap;
 }
 
-.work .box-container .box img {
-  max-height: 100%;
-  max-width: 100%;
-  object-fit: cover;
-}
+/* ---------- descrição completa (expansível) ---------- */
 
-.work .box-container .box .content {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background: rgba(255, 255, 255, 0.9);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transform: translateY(100%);
-  transition: transform 0.8s ease-in-out;
-}
-
-.work .box-container .box .content .tag {
-  position: absolute;
-  bottom: 100%;
-  width: 100%;
-  background: #0f46a2;
-  padding: 1rem 0;
-  transition: transform 0.8s ease-in-out;
-}
-
-.work .box-container .box .content .tag h3 {
-  font-size: 1.8rem;
-  color: white;
-  margin: 0;
-  text-align: center;
-}
-
-.work .box-container .box .content .desc {
-  width: 100%;
-  padding: 2rem 1rem;
+.svc-detail {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.5s cubic-bezier(0.2, 0.8, 0.2, 1),
+    opacity 0.4s ease;
   opacity: 0;
-  transition: opacity 0.8s ease-in-out;
 }
 
-.work .box-container .box .content .desc p {
-  font-size: 1.5rem;
-  line-height: 1.6;
-  margin: 0;
-}
-
-.work .box-container .box:hover .content {
-  transform: translateY(0);
-}
-
-.work .box-container .box:hover .content .desc {
+.svc-detail.open {
+  grid-template-rows: 1fr;
   opacity: 1;
 }
 
-/* Responsive Design */
+.svc-detail > p {
+  overflow: hidden;
+  font-size: 1.5rem;
+  line-height: 1.75;
+  color: rgba(207, 224, 255, 0.82);
+  font-family: "Nunito", sans-serif;
+  border-left: 2px solid rgba(10, 88, 255, 0.5);
+  padding-left: 1.6rem;
+  margin-bottom: 2.5rem;
+}
+
+/* ---------- ações ---------- */
+
+.svc-actions {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.svc-more,
+.svc-cta {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  background: transparent;
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+/* ação secundária: link de texto, para não competir com o CTA */
+.svc-more {
+  color: var(--volit-blue-soft);
+  border: none;
+  padding: 1rem 0;
+  margin-right: 0.6rem;
+}
+
+.svc-more:hover {
+  color: #ffffff;
+}
+
+.svc-more i {
+  font-size: 1.1rem;
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.svc-more[aria-expanded="true"] i {
+  transform: rotate(180deg);
+}
+
+.svc-cta {
+  color: #ffffff;
+  background: var(--volit-blue);
+  border: 1px solid var(--volit-blue);
+  padding: 1rem 1.8rem;
+}
+
+.svc-cta:hover {
+  background: var(--volit-blue-hover);
+  border-color: var(--volit-blue-hover);
+  transform: translateX(3px);
+}
+
+.svc-cta i {
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.svc-cta:hover i {
+  transform: translateX(3px);
+}
+
+/* foco visível para teclado */
+.svc-more:focus-visible,
+.svc-cta:focus-visible {
+  outline: 2px solid var(--volit-blue-soft);
+  outline-offset: 3px;
+}
+
+/* ---------- entrada escalonada ----------
+   Os cards nascem visíveis. O estado inicial "escondido" só é aplicado
+   depois que o JS confirma que vai observá-los (classe .reveal-on).
+   Assim, sem JS ou sem IntersectionObserver, o conteúdo aparece normalmente. */
+
+.svc-grid.reveal-on .svc-card {
+  opacity: 0;
+  transform: translateY(28px);
+}
+
+.svc-grid.reveal-on .svc-card.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.svc-grid.reveal-on .svc-card.is-visible:nth-child(2) { transition-delay: 0.08s; }
+.svc-grid.reveal-on .svc-card.is-visible:nth-child(3) { transition-delay: 0.16s; }
+.svc-grid.reveal-on .svc-card.is-visible:nth-child(4) { transition-delay: 0.24s; }
+.svc-grid.reveal-on .svc-card.is-visible:nth-child(5) { transition-delay: 0.32s; }
+.svc-grid.reveal-on .svc-card.is-visible:nth-child(6) { transition-delay: 0.4s; }
+
+/* quem prefere menos animação vê tudo parado e visível */
+@media (prefers-reduced-motion: reduce) {
+  .svc-grid.reveal-on .svc-card,
+  .svc-card {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .svc-card:hover {
+    transform: none;
+  }
+}
+
+/* ---------- responsivo ---------- */
+
 @media screen and (max-width: 1200px) {
   .work {
-    padding: 4rem 4rem;
+    padding: 6rem 4rem 7rem;
   }
-  
-  .work .box-container .box {
-    width: calc(50% - 1.5rem); /* 2 items per row */
+
+  /* 2 por linha: cada card ocupa metade das 6 colunas */
+  .svc-card,
+  .svc-card:nth-last-child(-n + 2) {
+    grid-column: span 3;
+  }
+
+  .svc-card.featured {
+    grid-column: span 6;
   }
 }
 
 @media screen and (max-width: 768px) {
   .work {
-    padding: 3rem 2rem;
+    padding: 5rem 2rem 6rem;
   }
 
   .work h2 {
-    font-size: 2.5rem;
-    padding: 10px;
+    font-size: 2.8rem;
   }
 
-  .work .box-container {
-    gap: 2rem;
+  .work-head {
+    margin-bottom: 4rem;
+  }
+
+  .work-head .work-sub {
+    font-size: 1.6rem;
+  }
+
+  .svc-grid {
     width: 100%;
+    gap: 2rem;
   }
 
-  .work .box-container .box {
-    width: 100%; /* 1 item per row */
-    height: 40rem;
+  /* 1 por linha */
+  .svc-card,
+  .svc-card:nth-last-child(-n + 2),
+  .svc-card.featured {
+    grid-column: span 6;
   }
 
-  .work .box-container .box .content .tag h3 {
-    font-size: 1.5rem;
+  .svc-body,
+  .svc-card.featured .svc-body {
+    padding: 2.5rem;
   }
 
-  .work .box-container .box .content .desc p {
-    font-size: 1.3rem;
+  .svc-card.featured .svc-title {
+    font-size: 2.4rem;
+  }
+
+  .svc-card.featured .svc-hook {
+    font-size: 1.7rem;
   }
 }
 
 @media screen and (max-width: 480px) {
   .work {
-    padding: 2rem 1rem;
+    padding: 4rem 1.5rem 5rem;
   }
 
   .work h2 {
-    font-size: 2rem;
+    font-size: 2.2rem;
   }
 
-  .work .box-container .box {
-    height: 35rem;
+  .svc-body,
+  .svc-card.featured .svc-body {
+    padding: 2rem;
   }
 
-  .work .box-container .box .content .desc {
-    padding: 1rem;
+  .svc-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .svc-more,
+  .svc-cta {
+    justify-content: center;
   }
 }
 /* work section ends */
@@ -469,8 +801,8 @@
    ========================================== */
 
 .contact {
-    /* Fundo com gradiente colorido (como um pôr do sol) */
-background: linear-gradient(to bottom, #00002c, #25138B);
+    /* Fundo com gradiente navy -> azul royal (mesma faixa dos banners) */
+background: linear-gradient(to bottom, var(--volit-bg-deep), var(--volit-royal));
     
     min-height: 80vh;  /* Altura da tela toda */
     padding: 4rem 2rem; /* Espaço interno */
@@ -510,17 +842,17 @@ background: linear-gradient(to bottom, #00002c, #25138B);
 .contact-title h2 {
     /* Tamanho que muda conforme a tela */
     font-size: clamp(2rem, 5vw, 4rem); 
-    color: rgba(255, 255, 255, 0.87);        /* Cor branca */
+    color: #ffffff;      /* Cor branca */
     margin-bottom: 1rem; /* Espaço embaixo */
-    
+
     /* Alinhar ícone e texto */
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 1rem; /* Espaço entre ícone e texto */
-    
-    /* Efeito de sombra no texto */
-    text-shadow: 0 4px 8px rgba(255, 255, 255, 0.815);
+
+    /* Brilho azul no texto (mesmo tom dos banners) */
+    text-shadow: 0 4px 18px rgba(47, 123, 255, 0.65);
     
     /* Animação de entrada */
     animation: slideInDown 1s ease-out;
@@ -528,7 +860,7 @@ background: linear-gradient(to bottom, #00002c, #25138B);
 
 .contact-title p {
     font-size: 1.2rem;   /* Tamanho médio */
-    color: rgba(255, 255, 255, 0.39); /* Branco quase transparente */
+    color: var(--volit-blue-pale); /* Azul bem claro */
     max-width: 600px;    /* Largura máxima */
     margin: 0 auto;      /* Centralizar */
     
@@ -652,14 +984,14 @@ background: linear-gradient(to bottom, #00002c, #25138B);
 .contact-info:hover,
 .map-container:hover {
     transform: translateY(-5px); /* Levanta um pouco */
-    box-shadow: 0 30px 60px rgba(252, 252, 255, 0.137); /* Sombra maior */
+    box-shadow: 0 30px 60px rgba(10, 88, 255, 0.35); /* Sombra maior */
 }
 
 /* Títulos das seções */
 .contact-info h3,
 .map-container h3 {
     font-size: 2rem;    /* Tamanho grande */
-    color: #4b4b4b;        /* Cor  */
+    color: var(--volit-ink); /* Cor  */
     margin-bottom: 2rem; /* Espaço embaixo */
     
     /* Alinhar ícone e texto */
@@ -680,7 +1012,7 @@ background: linear-gradient(to bottom, #00002c, #25138B);
     padding: 1rem;       /* Espaço interno */
     
     /* Fundo colorido suave */
-    background: rgba(99, 111, 167, 0.1);
+    background: rgba(10, 88, 255, 0.08);
     border-radius: 12px; /* Cantos arredondados */
     
     /* Transições suaves */
@@ -693,15 +1025,15 @@ background: linear-gradient(to bottom, #00002c, #25138B);
 
 /* Efeito quando passar o mouse */
 .info-item:hover {
-    background: rgba(102, 126, 234, 0.2); /* Cor mais forte */
+    background: rgba(10, 88, 255, 0.15); /* Cor mais forte */
     transform: translateX(10px); /* Move para direita */
-    border-color: rgba(102, 126, 234, 0.3); /* Borda colorida */
+    border-color: rgba(10, 88, 255, 0.35); /* Borda colorida */
 }
 
 /* Ícones dos itens */
 .info-item i:first-child {
     font-size: 1.5rem;  /* Tamanho médio */
-    color: #1b1b1b;     /* Cor azul */
+    color: var(--volit-blue); /* Cor azul */
     margin-right: 1rem; /* Espaço à direita */
     width: 30px;        /* Largura fixa */
     text-align: center; /* Centralizar */
@@ -715,13 +1047,13 @@ background: linear-gradient(to bottom, #00002c, #25138B);
 /* Rótulo (título) */
 .info-item .label {
     font-weight: bold; /* Texto em negrito */
-    color: #000000;       /* Cor escura */
+    color: var(--volit-ink); /* Cor escura */
     margin-bottom: 0.2rem; /* Espaço pequeno embaixo */
 }
 
 /* Valor (informação) */
 .info-item .value {
-    color: #636c6d;       /* Cor */
+    color: var(--volit-ink-soft); /* Cor */
     font-size: 1.2rem; /* Tamanho um pouco menor */
 }
 
@@ -775,7 +1107,7 @@ background: linear-gradient(to bottom, #00002c, #25138B);
 
 .map-info p {
     margin-bottom: 1rem; /* Espaço embaixo */
-    color: #8a8a8a;         /* Cor cinza */
+    color: var(--volit-ink-soft); /* Cor cinza */
 }
 
 /* ==========================================
@@ -810,16 +1142,16 @@ background: linear-gradient(to bottom, #00002c, #25138B);
 
 /* Botão principal (mais importante) */
 .btn-primary {
-    background: linear-gradient(45deg, #667eea, #764ba2); /* Gradiente */
+    background: linear-gradient(45deg, var(--volit-blue), #0033b3); /* Gradiente */
     color: white; /* Texto branco */
 }
 
 .btn-primary:hover {
     transform: translateY(-3px); /* Levanta */
-    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4); /* Sombra colorida */
+    box-shadow: 0 10px 25px rgba(10, 88, 255, 0.5); /* Sombra colorida */
 }
 
-/* Botão secundário */
+/* Botão secundário (verde do WhatsApp, cor da marca) */
 .btn-whats {
     background: linear-gradient(45deg, #22c52f); /* Gradiente */
     color: #ffffff;         /* Texto colorido */
@@ -827,18 +1159,19 @@ background: linear-gradient(to bottom, #00002c, #25138B);
 
 .btn-whats:hover {
     transform: translateY(-3px); /* Levanta */
-    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4); /* Sombra colorida */
+    box-shadow: 0 10px 25px rgba(34, 197, 47, 0.45); /* Sombra colorida */
 }
 
 /* Botão com contorno */
 .btn-outline {
     background: transparent;
-    color: #333;
-    border: 2px solid #ddd;
+    color: var(--volit-ink);
+    border: 2px solid var(--volit-blue-pale);
 }
 
 .btn-outline:hover {
-    background: #333;
+    background: var(--volit-blue);
+    border-color: var(--volit-blue);
     color: white;
 }
 
@@ -863,41 +1196,41 @@ background: linear-gradient(to bottom, #00002c, #25138B);
     opacity: 0.1;       /* Quase transparente */
 }
 
-/* Forma 1 - Azul */
+/* Forma 1 - Azul elétrico */
 .shape-1 {
     width: 100px;
     height: 100px;
-    background: #667eea;
+    background: var(--volit-blue);
     top: 10%;
     left: 10%;
     animation: float 6s ease-in-out infinite;
 }
 
-/* Forma 2 - Rosa */
+/* Forma 2 - Azul médio */
 .shape-2 {
     width: 150px;
     height: 150px;
-    background: #f093fb;
+    background: var(--volit-blue-hover);
     top: 70%;
     right: 10%;
     animation: float 8s ease-in-out infinite reverse;
 }
 
-/* Forma 3 - Roxo */
+/* Forma 3 - Azul claro */
 .shape-3 {
     width: 80px;
     height: 80px;
-    background: #764ba2;
+    background: var(--volit-blue-soft);
     top: 30%;
     right: 30%;
     animation: float 10s ease-in-out infinite;
 }
 
-/* Forma 4 - Verde */
+/* Forma 4 - Azul profundo */
 .shape-4 {
     width: 120px;
     height: 120px;
-    background: #4ecdc4;
+    background: #0033b3;
     bottom: 20%;
     left: 20%;
     animation: float 7s ease-in-out infinite reverse;
@@ -1056,6 +1389,6 @@ background: linear-gradient(to bottom, #00002c, #25138B);
 /* Foco visível para navegação por teclado */
 .btn:focus,
 .info-item:focus {
-    outline: 3px solid #667eea;
+    outline: 3px solid var(--volit-blue);
     outline-offset: 2px;
 }
