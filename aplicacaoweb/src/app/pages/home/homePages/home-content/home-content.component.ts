@@ -57,7 +57,7 @@ export class HomeContentComponent implements OnInit, AfterViewInit, OnDestroy {
     {
       image: 'banners/banner-ia.png',
       alt: 'A IA já faz parte da sua vida - Vibe Code Engineering',
-      link: '',
+      link: 'https://cursovibecode.volit.com.br/',
     },
     {
       image: 'banners/banner-analise-dados.png',
