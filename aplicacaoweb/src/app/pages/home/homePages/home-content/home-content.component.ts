@@ -62,7 +62,7 @@ export class HomeContentComponent implements OnInit, AfterViewInit, OnDestroy {
     {
       image: 'banners/banner-analise-dados.png',
       alt: 'Capacitação em Análise de Dados - Transforme dados em decisões',
-      link: '',
+      link: 'https://cursoanalisedados.volit.com.br/',
     },
   ];
 
