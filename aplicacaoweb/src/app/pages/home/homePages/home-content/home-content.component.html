@@ -1,19 +1,58 @@
-<div id="banana"></div>
-<div id="particles-js"></div>
-
-<!-- hero section starts -->
+<!-- hero section (carrossel de banners) starts -->
 <section class="home" id="home">
-  <a class="logo">
-    <img
-      src="Logo completa.png"
-  /></a>
-  <div class="content">
-    <a
-      ><img src="https://i.ibb.co/2029vSPC/Elos-VOLIT2.png" alt="Elos-VOLIT2"
-    /></a>
+  <div
+    class="carousel"
+    (mouseenter)="pauseAutoplay()"
+    (mouseleave)="startAutoplay()"
+  >
+    <div
+      class="carousel-track"
+      [style.transform]="'translateX(-' + currentSlide * 100 + '%)'"
+    >
+      @for (banner of banners; track banner.image) {
+      <a
+        class="carousel-slide"
+        [class.has-link]="!!banner.link"
+        [attr.href]="banner.link || null"
+        [attr.target]="banner.link ? '_blank' : null"
+        [attr.rel]="banner.link ? 'noopener' : null"
+      >
+        <img [src]="banner.image" [alt]="banner.alt" draggable="false" />
+      </a>
+      }
+    </div>
+
+    <button
+      type="button"
+      class="carousel-arrow prev"
+      (click)="prevSlide()"
+      aria-label="Banner anterior"
+    >
+      <i class="fas fa-chevron-left"></i>
+    </button>
+    <button
+      type="button"
+      class="carousel-arrow next"
+      (click)="nextSlide()"
+      aria-label="Próximo banner"
+    >
+      <i class="fas fa-chevron-right"></i>
+    </button>
+
+    <div class="carousel-dots">
+      @for (banner of banners; track banner.image; let i = $index) {
+      <button
+        type="button"
+        class="dot"
+        [class.active]="i === currentSlide"
+        (click)="goToSlide(i)"
+        [attr.aria-label]="'Ir para o banner ' + (i + 1)"
+      ></button>
+      }
+    </div>
   </div>
 </section>
-<!-- hero section ends -->
+<!-- hero section (carrossel de banners) ends -->
 
 <!-- about section starts -->
 <section class="about" id="sobre">
@@ -27,11 +66,24 @@
       <h3>Volit</h3>
       <span class="tag">Empresa de tecnologia</span>
       <p>
-        A Volit é uma empresa de tecnologia e gestão focada no atendimento a diversos mercados, como saúde, indústria, transporte, segurança e serviços. Baseada no conceito de "Conhecer, Transformar e Evoluir", todas as nossas ações são direcionadas para concretizar esses pilares, essenciais para o sucesso de nossos projetos.
-<br><br>
-        Nosso atendimento é fluido e personalizado, abraçando as necessidades críticas de cada cliente para oferecer soluções eficientes e inovadoras. Contamos com um time diversificado, composto por profissionais de diferentes faixas etárias, conhecimentos e abordagens, formando uma equipe capacitada para atuar nos diversos mercados em que estamos presentes.
-        <br><br>
-        Nossa história teve início em 1984, e em 2012, a marca Volit foi oficialmente criada. Ao longo dos anos, estruturamos relações sólidas com nossas alianças estratégicas apresentadas a baixo, consolidando nossa posição no mercado e garantindo um alto nível de excelência em nossos serviços.
+        A Volit é uma empresa de tecnologia e gestão focada no atendimento a
+        diversos mercados, como saúde, indústria, transporte, segurança e
+        serviços. Baseada no conceito de "Conhecer, Transformar e Evoluir",
+        todas as nossas ações são direcionadas para concretizar esses pilares,
+        essenciais para o sucesso de nossos projetos.
+        <br /><br />
+        Nosso atendimento é fluido e personalizado, abraçando as necessidades
+        críticas de cada cliente para oferecer soluções eficientes e inovadoras.
+        Contamos com um time diversificado, composto por profissionais de
+        diferentes faixas etárias, conhecimentos e abordagens, formando uma
+        equipe capacitada para atuar nos diversos mercados em que estamos
+        presentes.
+        <br /><br />
+        Nossa história teve início em 1984, e em 2012, a marca Volit foi
+        oficialmente criada. Ao longo dos anos, estruturamos relações sólidas
+        com nossas alianças estratégicas apresentadas a baixo, consolidando
+        nossa posição no mercado e garantindo um alto nível de excelência em
+        nossos serviços.
       </p>
     </div>
   </div>
@@ -44,37 +96,31 @@
     <div class="row" id="skillsContainer">
       <div class="bar">
         <div class="info">
-          <img
-            src="logodryit.jpg"
-            alt="Dryit"
-          />
+          <img src="logodryit.jpg" alt="Dryit" />
         </div>
       </div>
 
       <div class="bar">
         <div class="info">
-          <img
-            src="ing-objetiva.png"
-            alt="Objetiva"
-          />
+          <img src="ing-objetiva.png" alt="Objetiva" />
         </div>
       </div>
 
       <div class="bar">
         <div class="info">
-          <img
-            src="img-seidor.png"
-            alt="Seidor"
-          />
+          <img src="img-seidor.png" alt="Seidor" />
         </div>
       </div>
 
       <div class="bar">
         <div class="info">
-          <img
-            src="img-help.png"
-            alt="Help B1"
-          />
+          <img src="img-help.png" alt="Help B1" />
+        </div>
+      </div>
+
+      <div class="bar">
+        <div class="info">
+          <img src="logo-nanobi.png" alt="Nanobi" />
         </div>
       </div>
     </div>
@@ -83,268 +129,173 @@
 
 <!-- work project section starts -->
 <section class="work" id="servicos">
-  <h2 class="heading"><i class="fas fa-user-cog"></i> Serviços</h2>
+  <!-- malha de circuito + brilho de fundo (decorativo) -->
+  <div class="work-bg" aria-hidden="true"></div>
 
-  <div class="box-container">
-    <div class="box tilt">
-      <img
-        draggable="false"
-        src="https://img.icons8.com/ios-filled/250/FFFFFF/data-configuration.png"
-        alt="img banco"
-      />
-      <div class="content">
-        <div class="tag">
-          <h3>Banco de dados</h3>
+  <div class="work-head">
+    <span class="eyebrow">// o que a Volit faz</span>
+    <h2 class="heading"><i class="fas fa-user-cog"></i> Serviços</h2>
+    <p class="work-sub">
+      Tecnologia e gestão aplicadas ao seu negócio — da base de dados à
+      capacitação do time.
+    </p>
+  </div>
+
+  <div class="svc-grid">
+    @for (svc of services; track svc.id) {
+    <article class="svc-card" [class.featured]="svc.featured">
+      <div class="svc-body">
+        <div class="svc-top">
+          <span class="svc-index">{{ svc.index }}</span>
+          <span class="svc-icon"><i class="fas {{ svc.icon }}"></i></span>
         </div>
-        <div class="desc">
-          <p>
-            <b>Potencialize sua gestão de dados conosco!</b> <br />
-            <br />
-            Oferecemos administração detalhada, garantindo estabilidade e
-            segurança, além de designs personalizados e migrações seguras.
-            Investimos em performance tuning para proporcionar uma experiência
-            de usuário ágil e eficiente. Transforme seus dados em valor e
-            otimize seus processos conosco!
-          </p>
+
+        <h3 class="svc-title">{{ svc.title }}</h3>
+        <p class="svc-hook">{{ svc.hook }}</p>
+
+        <ul class="svc-chips">
+          @for (chip of svc.chips; track chip) {
+          <li>{{ chip }}</li>
+          }
+        </ul>
+
+        <div
+          class="svc-detail"
+          [class.open]="expandedService === svc.id"
+          [id]="'svc-detail-' + svc.id"
+        >
+          <p>{{ svc.description }}</p>
+        </div>
+
+        <div class="svc-actions">
+          <button
+            type="button"
+            class="svc-more"
+            (click)="toggleService(svc.id)"
+            [attr.aria-expanded]="expandedService === svc.id"
+            [attr.aria-controls]="'svc-detail-' + svc.id"
+          >
+            {{ expandedService === svc.id ? "Ver menos" : "Ver detalhes" }}
+            <i class="fas fa-chevron-down"></i>
+          </button>
+
+          <button type="button" class="svc-cta" (click)="scrollToContact()">
+            Falar com a Volit <i class="fas fa-arrow-right"></i>
+          </button>
         </div>
       </div>
-    </div>
-
-    <div class="box tilt">
-      <img
-        draggable="false"
-        src="https://img.icons8.com/pastel-glyph/250/FFFFFF/conclusion-contract.png"
-        alt=""
-      />
-      <div class="content">
-        <div class="tag">
-          <h3>Mediação de Conflitos</h3>
-        </div>
-        <div class="desc">
-          <p>
-            <b
-              >Transforme a gestão de conflitos com nossa Plataforma de Mediação
-              Jurídica!</b
-            >
-            <br />
-            <br />
-            Oferecemos soluções avançadas de mediação, conciliação e arbitragem,
-            com vídeo assistência para comunicação direta e eficiente, além de
-            gerenciamento detalhado de conflitos. Nossa plataforma é flexível,
-            adaptando-se a qualquer tipo de disputa, garantindo agilidade,
-            segurança e confidencialidade. Soluções rápidas e eficazes, com a
-            conveniência de uma plataforma online que facilita a resolução de
-            disputas de forma simples e segura. Entre em contato e descubra como
-            podemos ajudar sua empresa a resolver conflitos com eficiência!
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="box tilt">
-      <img
-        draggable="false"
-        src="https://img.icons8.com/ios/200/FFFFFF/wifi--v1.png"
-        alt=""
-      />
-      <div class="content">
-        <div class="tag">
-          <h3>RFID</h3>
-        </div>
-        <div class="desc">
-          <p>
-            <b>RFID e IoT: Precisão e controle para o seu negócio!!!</b> <br />
-            <br />
-            A tecnologia RFID sustenta parte da Indústria 4.0 por meio de
-            aplicações em IoT. Processos baseados nessa tecnologia garantem um
-            alto nível de precisão, rastreabilidade e controle sobre os produtos
-            aos quais estão associados. Ela é muito útil em mercados como varejo
-            (retail), hospitalar, industrial, transporte e meios de cobrança
-            (pedágios). A Volit possui experiência no tratamento desses
-            processos em todos os mercados citados.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="box tilt">
-      <img
-        draggable="false"
-        src="https://img.icons8.com/ios/200/FFFFFF/my-computer.png"
-        alt=""
-      />
-      <div class="content">
-        <div class="tag">
-          <h3>Desenvolvimento de Software</h3>
-        </div>
-        <div class="desc">
-          <p>
-            <b>Transforme sua experiência digital conosco!</b> <br />
-            <br />
-            Desenvolvemos aplicações mobile, websites, e-commerce, APIs e
-            soluções para controle de acesso veicular, otimização de inventário
-            e rastreamento de ativos. Oferecemos serviços especializados,
-            focados em melhorar a eficiência e a gestão do seu negócio.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="box tilt">
-      <img
-        draggable="false"
-        src="https://img.icons8.com/ios-filled/200/FFFFFF/service.png"
-        alt="professor"
-      />
-      <div class="content">
-        <div class="tag">
-          <h3>Assessoria de validação de sistemas</h3>
-        </div>
-        <div class="desc">
-          <p>
-            <b
-              >Prestamos serviços de assessoria para a validação de sistemas em
-              entidades como a ANVISA e o Banco Central.</b
-            >
-            <br />
-            <br />
-            Oferecemos assessoria especializada para garantir que seus sistemas
-            atendam aos padrões estabelecidos pelas entidades como anvisa e
-            banco central.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="box tilt">
-      <img
-        draggable="false"
-        src="https://img.icons8.com/ios/200/FFFFFF/teacher.png"
-        alt=""
-      />
-      <div class="content">
-        <div class="tag">
-          <h3>Capacitação</h3>
-        </div>
-        <div class="desc">
-          <p>
-            <b>Capacitação para fortalecer o seu time profissional.</b> <br />
-            <br />
-            Oferecemos capacitação profissional para aprimorar habilidades,
-            otimizar processos e preparar sua equipe para atender aos requisitos
-            tecnológicos da sua empresa.
-          </p>
-        </div>
-      </div>
-    </div>
+    </article>
+    }
   </div>
 </section>
 <!-- work project section ends -->
 
+
 <!-- SEÇÃO DE CONTATO COMEÇA AQUI -->
 <section class="contact" id="contato">
-    
-    <!-- TÍTULO PRINCIPAL COM ÍCONE -->
-    <div class="contact-title">
-        <h2>
-            <i class="fas fa-headset bounce"></i>
-            Entre em Contato
-        </h2>
-        <p>Estamos aqui para ajudar você! Entre em contato conosco.</p>
-    </div>
+  <!-- TÍTULO PRINCIPAL COM ÍCONE -->
+  <div class="contact-title">
+    <h2>
+      <i class="fas fa-headset bounce"></i>
+      Entre em Contato
+    </h2>
+    <p>Estamos aqui para ajudar você! Entre em contato conosco.</p>
+  </div>
 
-    <!-- CONTAINER PRINCIPAL COM DUAS COLUNAS -->
-    <div class="contact-container">
-        
-        <!-- COLUNA 1: INFORMAÇÕES DE CONTATO -->
-        <div class="contact-info">
-            <h3>
-                <i class="fas fa-info-circle"></i>
-                Nossas Informações
-            </h3>
+  <!-- CONTAINER PRINCIPAL COM DUAS COLUNAS -->
+  <div class="contact-container">
+    <!-- COLUNA 1: INFORMAÇÕES DE CONTATO -->
+    <div class="contact-info">
+      <h3>
+        <i class="fas fa-info-circle"></i>
+        Nossas Informações
+      </h3>
 
-            <!-- ITEM: EMAIL -->
-            <div class="info-item" (click)="copyToClipboard('volit@volit.com.br')">
-                <i class="fas fa-envelope pulse"></i>
-                <div>
-                    <div class="label">📧 Email</div>
-                    <div class="value">volit&#64;volit.com.br</div>
-                </div>
-                <i class="fas fa-copy copy-icon"></i>
-            </div>
-
-            <!-- ITEM: ENDEREÇO -->
-            <div class="info-item">
-                <i class="fas fa-map-marker-alt pulse"></i>
-                <div>
-                    <div class="label">📍 Endereço</div>
-                    <div class="value">Rua José de Carvalho 313<br>Chácara Santo Antonio</div>
-                </div>
-            </div>
-
-            <!-- ITEM: TELEFONE -->
-            <div class="info-item" (click)="callPhone('11995886880')">
-                <i class="fas fa-phone pulse"></i>
-                <div>
-                    <div class="label">📞 Telefone</div>
-                    <div class="value">(11) 99588-6880</div>
-                </div>
-                <i class="fas fa-external-link-alt"></i>
-            </div>
-
-            <!-- ITEM: HORÁRIO -->
-            <div class="info-item">
-                <i class="fas fa-clock pulse"></i>
-                <div>
-                    <div class="label">🕐 Horário</div>
-                    <div class="value">Segunda à Sexta<br>--:-- - --:--</div>
-                </div>
-            </div>
-
-            <!-- BOTÕES DE AÇÃO -->
-            <div class="action-buttons">
-                <button class="btn btn-primary" (click)="sendEmail()">
-                    <i class="fas fa-paper-plane"></i>
-                    Enviar Email
-                </button>
-                <button class="btn btn-whats" (click)="openWhatsApp()">
-                    <i class="fab fa-whatsapp"></i>
-                    WhatsApp
-                </button>
-            </div>
+      <!-- ITEM: EMAIL -->
+      <div class="info-item" (click)="copyToClipboard('volit@volit.com.br')">
+        <i class="fas fa-envelope pulse"></i>
+        <div>
+          <div class="label">📧 Email</div>
+          <div class="value">volit&#64;volit.com.br</div>
         </div>
+        <i class="fas fa-copy copy-icon"></i>
+      </div>
 
-        <!-- COLUNA 2: MAPA -->
-        <div class="map-container">
-            <h3>
-                <i class="fas fa-map-marked-alt"></i>
-                Nossa Localização
-            </h3>
-            
-            <div class="map-wrapper">
-                <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3655.1491799759106!2d-46.69957242361091!3d-23.634827964297436!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce50ee5287612f%3A0x7a6f0368c20012ff!2sR.%20Jos%C3%A9%20de%20Carvalho%2C%20313%20-%20Ch%C3%A1cara%20Santo%20Ant%C3%B4nio%20(Zona%20Sul)%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2004714-020!5e0!3m2!1spt-BR!2sbr!4v1748447831453!5m2!1spt-BR!2sbr"
-                    loading="lazy" 
-                    referrerpolicy="no-referrer-when-downgrade"
-                    title="Localização da empresa">
-                </iframe>
-            </div>
-
-            <div class="map-info">
-                <!-- <p><strong>🚗 Como chegar:</strong> Próximo ao metrô e principais avenidas</p> -->
-                <button class="btn btn-outline" (click)="openGoogleMaps()">
-                    <i class="fas fa-directions"></i>
-                    Ver Direções
-                </button>
-            </div>
+      <!-- ITEM: ENDEREÇO -->
+      <div class="info-item">
+        <i class="fas fa-map-marker-alt pulse"></i>
+        <div>
+          <div class="label">📍 Endereço</div>
+          <div class="value">
+            Rua José de Carvalho 313<br />Chácara Santo Antonio
+          </div>
         </div>
+      </div>
+
+      <!-- ITEM: TELEFONE -->
+      <div class="info-item" (click)="copyToClipboard('(11)5182-9017')">
+        <i class="fas fa-phone pulse"></i>
+        <div>
+          <div class="label">📞 Telefone</div>
+          <div class="value">(11) 5182-9017</div>
+        </div>
+        <i class="fas fa-copy copy-icon"></i>
+      </div>
+
+      <!-- ITEM: HORÁRIO -->
+      <div class="info-item">
+        <i class="fas fa-clock pulse"></i>
+        <div>
+          <div class="label">🕐 Horário</div>
+          <div class="value">Segunda à Sexta<br />09:00 - 17:00</div>
+        </div>
+      </div>
+
+      <!-- BOTÕES DE AÇÃO -->
+      <div class="action-buttons">
+        <button class="btn btn-primary" (click)="sendEmail()">
+          <i class="fas fa-paper-plane"></i>
+          Enviar Email
+        </button>
+        <button class="btn btn-whats" (click)="openWhatsApp()">
+          <i class="fab fa-whatsapp"></i>
+          WhatsApp
+        </button>
+      </div>
     </div>
 
-    <!-- DECORAÇÃO: FORMAS FLUTUANTES -->
-    <div class="floating-shapes">
-        <div class="shape shape-1"></div>
-        <div class="shape shape-2"></div>
-        <div class="shape shape-3"></div>
-        <div class="shape shape-4"></div>
+    <!-- COLUNA 2: MAPA -->
+    <div class="map-container">
+      <h3>
+        <i class="fas fa-map-marked-alt"></i>
+        Nossa Localização
+      </h3>
+
+      <div class="map-wrapper">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3655.1491799759106!2d-46.69957242361091!3d-23.634827964297436!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce50ee5287612f%3A0x7a6f0368c20012ff!2sR.%20Jos%C3%A9%20de%20Carvalho%2C%20313%20-%20Ch%C3%A1cara%20Santo%20Ant%C3%B4nio%20(Zona%20Sul)%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2004714-020!5e0!3m2!1spt-BR!2sbr!4v1748447831453!5m2!1spt-BR!2sbr"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Localização da empresa"
+        >
+        </iframe>
+      </div>
+
+      <div class="map-info">
+        <!-- <p><strong>🚗 Como chegar:</strong> Próximo ao metrô e principais avenidas</p> -->
+        <button class="btn btn-outline" (click)="openGoogleMaps()">
+          <i class="fas fa-directions"></i>
+          Ver Direções
+        </button>
+      </div>
     </div>
+  </div>
+
+  <!-- DECORAÇÃO: FORMAS FLUTUANTES -->
+  <div class="floating-shapes">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+    <div class="shape shape-4"></div>
+  </div>
 </section>

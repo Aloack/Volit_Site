@@ -1,6 +1,33 @@
 /* You can add global styles to this file, and also import other style files */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+
+/* ==========================================
+   PALETA VOLIT
+   Cores extraídas dos banners do carrossel
+   (navy escuro + azul elétrico)
+   ========================================== */
+:root {
+  /* fundos escuros, do mais escuro ao mais claro */
+  --volit-bg-deep: #02061a;   /* navy quase preto - fundo dos banners */
+  --volit-bg-dark: #061029;
+  --volit-bg-mid: #0d2559;
+  --volit-bg-light: #1a3a7a;
+  --volit-royal: #0a2a7a;     /* azul royal escuro */
+
+  /* azuis de destaque */
+  --volit-blue: #0a58ff;      /* azul elétrico - botão "SAIBA MAIS" dos banners */
+  --volit-blue-hover: #2f7bff;
+  --volit-blue-soft: #5b9dff; /* azul claro - textos de apoio sobre fundo escuro */
+  --volit-blue-pale: #cfe0ff;
+
+  /* textos e superfícies claras */
+  --volit-ink: #0a1733;       /* texto escuro sobre fundo claro */
+  --volit-ink-soft: #5a6b85;  /* texto secundário */
+  --volit-surface: #ffffff;
+  --volit-surface-alt: #f4f7fc; /* branco levemente azulado */
+}
 
 *{
   margin: 0;
@@ -17,7 +44,7 @@ html{
   scroll-behavior: smooth;
 }
 body{
-  background: #f7f7f7;
+  background: var(--volit-surface-alt);
   font-family: 'Poppins', sans-serif;
 }
 
@@ -30,10 +57,10 @@ html::-webkit-scrollbar{
   width: .8rem;
 }
 html::-webkit-scrollbar-track{
-  background: rgb(235, 202, 245);
+  background: var(--volit-blue-pale);
 }
 html::-webkit-scrollbar-thumb{
-  background: #420177;
+  background: var(--volit-blue);
 }
 
 /* pre loader start */
@@ -41,7 +68,7 @@ html::-webkit-scrollbar-thumb{
   position: fixed;
   top: 0; left: 0;
   z-index: 10000;
-  background: #e6eff1;
+  background: var(--volit-surface-alt);
   display: flex;
   align-items: center;
   justify-content: center;

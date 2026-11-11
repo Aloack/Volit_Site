@@ -50,7 +50,7 @@ header {
 
 .navbar ul li a {
   font-size: 2rem;
-  color: #0E2431;
+  color: var(--volit-ink);
   font-weight: 600;
   text-decoration: none;
   letter-spacing: 0.04rem;
@@ -59,9 +59,53 @@ header {
 
 .navbar ul li a.active,
 .navbar ul li a:hover {
-  color: #01ccff;
-  border-bottom: .2rem solid #01ccff;
+  color: var(--volit-blue);
+  border-bottom: .2rem solid var(--volit-blue);
   padding: .5rem 0;
+}
+
+/* Botao de destaque - Videoteca */
+.navbar li.videoteca-item {
+  margin-left: 2rem;
+}
+
+.navbar ul li a.btn-videoteca {
+  display: inline-flex;
+  align-items: center;
+  gap: .7rem;
+  padding: .9rem 1.8rem;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--volit-surface);
+  background: linear-gradient(135deg, var(--volit-blue) 0%, var(--volit-royal) 100%);
+  border-radius: 999px;
+  box-shadow: 0 .4rem 1.2rem rgba(10, 88, 255, .35);
+  animation: videoteca-pulse 2.4s ease-in-out infinite;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.navbar ul li a.btn-videoteca i {
+  font-size: 1.9rem;
+}
+
+.navbar ul li a.btn-videoteca:hover,
+.navbar ul li a.btn-videoteca.active {
+  color: var(--volit-surface);
+  border-bottom: none;
+  padding: .9rem 1.8rem;
+  transform: translateY(-.2rem);
+  box-shadow: 0 .7rem 1.8rem rgba(10, 88, 255, .55);
+  animation: none;
+}
+
+@keyframes videoteca-pulse {
+  0%   { box-shadow: 0 .4rem 1.2rem rgba(10, 88, 255, .35), 0 0 0 0 rgba(10, 88, 255, .5); }
+  70%  { box-shadow: 0 .4rem 1.2rem rgba(10, 88, 255, .35), 0 0 0 1rem rgba(10, 88, 255, 0); }
+  100% { box-shadow: 0 .4rem 1.2rem rgba(10, 88, 255, .35), 0 0 0 0 rgba(10, 88, 255, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navbar ul li a.btn-videoteca { animation: none; }
 }
 
 #menu-icon {
@@ -74,7 +118,7 @@ header {
 
 #menu-icon i {
   font-size: 2rem;
-  color: #0E2431;
+  color: var(--volit-ink);
 }
 
 /* Dropdown menu styles */
@@ -131,6 +175,10 @@ header {
 
   .navbar li {
     margin: 1rem 0;
+  }
+
+  .navbar li.videoteca-item {
+    margin: 1.5rem 0;
   }
 
   .navbar.show {

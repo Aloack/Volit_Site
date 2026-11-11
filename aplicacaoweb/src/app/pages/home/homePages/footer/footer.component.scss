@@ -1,7 +1,7 @@
 .footer{
     min-height: auto;
     padding-top: 0;
-    background: rgb(37, 19, 139);
+    background: var(--volit-royal);
   }
   .footer .box-container{
     display: flex;
@@ -62,13 +62,13 @@ a:active {
   }
   .footer .box-container .box p{
     font-size: 1.5rem;
-    color: #ccc;
+    color: var(--volit-blue-pale);
     padding: .7rem 0;
     text-transform: none;
   }
   .footer .box-container .box p i{
     padding-right: 1rem;
-    color: #421cecf5;
+    color: var(--volit-blue-soft);
   }
   .footer .box-container .box a{
     font-size: 1.5rem;
@@ -77,7 +77,7 @@ a:active {
     display: block;
   }
   .footer .box-container .box a:hover{
-    color: #421cecf5;
+    color: var(--volit-blue-soft);
   }
   .footer .box-container .box .share{
     display: flex;
@@ -94,14 +94,14 @@ a:active {
     margin-right: 1rem;
     transition: .2s;
     background: rgb(230, 230, 230);
-    color: #02094b;
+    color: var(--volit-bg-deep);
     border: none;
   }
   .footer .box-container .box .share a:hover{
     background: transparent;
     transform: scale(0.98);
     border: .1rem solid rgb(180, 178, 178);
-    color: #421cecf5;
+    color: var(--volit-blue-soft);
   }
   .footer .credit{
     padding: 1rem 0 0 0;
@@ -113,7 +113,7 @@ a:active {
     border-top: .1rem solid #fff3;
   }
   .footer .credit a{
-    color: #421cecf5;
+    color: var(--volit-blue-soft);
   }
   .footer .fa{
       color: #E90606;
